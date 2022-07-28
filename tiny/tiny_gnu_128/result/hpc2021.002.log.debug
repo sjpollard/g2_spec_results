@@ -1,0 +1,2172 @@
+==============================================================================
+Debug log for hpc2021.  This file contains very detailed debugging
+output from the hpc2021 tools (as if "--verbose 99" had been specified) and is
+typically useful only to developers of the hpc2021 toolset.
+
+For a successful run, this debug log will be removed automatically, unless you
+specify "--keeptmp" on the command line, or "keeptmp=1" in your config file.
+
+If you file a support request with hpc2021support@spec.org, you may be
+asked to submit this file.
+------------------------------------------------------------------------------
+
+Environment variables that may have been set or changed by shrc:
+SPEC: /lustre/SPEChpc
+PATH: /home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-9.3.0-nxh5al7dhkd63qq7sypbh3yqattfp62n/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/texinfo-6.5-linaglyypzkundczjxvom7fysztb4ovn/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gawk-5.1.1-sg65tkbuvt27pg25uy772zfhmnlrsmul/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/libtool-2.4.7-6m6or6repaccpx7ucoy4vcp5km74mcu7/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/automake-1.16.5-dvbhmjh6ujf7zu4ivf3teugbtubzkss5/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/autoconf-2.69-ziydsxpzj6kjdjwfwp44emkrtwbtzvnn/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/perl-5.34.1-ke6tcdaugy36e7ekjxcvwriq4e5fqxfy/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gdbm-1.19-duesoyou4kbitkcudob3mxuxngbq6npl/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/readline-8.1-j2x3kdqrdfu4h25i36ky3aufj6dm37rs/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/ncurses-6.2-aqwxspsk6tmt7m4q2rov3u6jzuhpzbfk/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/pkgconf-1.8.0-xfvrekhrzy5cfwokccgknejzedxktado/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/bzip2-1.0.8-c7mcpjxx6hmrbwvrb6lpcpg2iui7lo6i/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/berkeley-db-18.1.40-2jnmbv5gy2h3f3e5kc3ih5kcp3yv3gya/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/m4-1.4.19-w5odayw5hls77oa6udezxkl6pbgyz63l/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/diffutils-3.8-qot6w6pjch5xfmqqwxld3iesgi6zts2y/bin:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/libiconv-1.16-x2rhfiiqx74ayproq2nmiqfck36xkv5w/bin:/lustre/SPEChpc/bin:/home/sam/spack/bin:/usr/lib64/qt-3.3/bin:/opt/amazon/openmpi/bin/:/opt/amazon/efa/bin/:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/bin:/opt/aws/bin:/opt/parallelcluster/pyenv/versions/3.7.10/envs/awsbatch_virtualenv/bin:/opt/slurm/bin:/home/sam/.local/bin:/home/sam/bin
+SPECPERLLIB: /lustre/SPEChpc/bin/lib:/lustre/SPEChpc/bin
+LD_LIBRARY_PATH: /home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-9.3.0-nxh5al7dhkd63qq7sypbh3yqattfp62n/lib64:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-9.3.0-nxh5al7dhkd63qq7sypbh3yqattfp62n/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/texinfo-6.5-linaglyypzkundczjxvom7fysztb4ovn/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/mpc-1.1.0-nsoqwq53gwetjkidzdjcrxum4ozk3xjo/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gawk-5.1.1-sg65tkbuvt27pg25uy772zfhmnlrsmul/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/mpfr-3.1.6-z245i6nn7lcyorvhsstxdoc4wezi5yni/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gmp-6.2.1-s5b7df4hhqp56p3p6jqk6uwe3lgfuwed/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/libtool-2.4.7-6m6or6repaccpx7ucoy4vcp5km74mcu7/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/perl-5.34.1-ke6tcdaugy36e7ekjxcvwriq4e5fqxfy/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/zlib-1.2.12-irjui7rbo67ryvkicz3qq4zrnh23xyqj/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gdbm-1.19-duesoyou4kbitkcudob3mxuxngbq6npl/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/readline-8.1-j2x3kdqrdfu4h25i36ky3aufj6dm37rs/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/ncurses-6.2-aqwxspsk6tmt7m4q2rov3u6jzuhpzbfk/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/pkgconf-1.8.0-xfvrekhrzy5cfwokccgknejzedxktado/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/bzip2-1.0.8-c7mcpjxx6hmrbwvrb6lpcpg2iui7lo6i/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/berkeley-db-18.1.40-2jnmbv5gy2h3f3e5kc3ih5kcp3yv3gya/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/libsigsegv-2.13-lcndyo5eguh4jogpsfve5lgusjmasqxm/lib:/home/sam/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/libiconv-1.16-x2rhfiiqx74ayproq2nmiqfck36xkv5w/lib
+DYLD_LIBRARY_PATH: 
+LC_ALL: C
+LC_LANG: C
+SPECDB_PWD: /home/sam/g2_spec_results/tiny/tiny_gnu_128
+------------------------------------------------------------------------------
+
+Runspec's verbose version output:
+                 This is the SPEC hpc2021 benchmark tools suite.
+
+Version summary:
+    hpc2021 version: 1.0.3
+ Benchmarks version: 1.0.3
+      Tools version: 0.9.1
+    runhpc version: v.unknown ($Id$)
+
+Tools information:
+ Tools package installed: linux-aarch64
+ File locking method: fcntl(2) (probably network-safe)
+Mode |  UID  |  GID  |   Size  |   Modification Time  | Name
+0755 | 1443601145 | 1443600513 | 2022365 |  2016-12-07 05:16:40 | specperl
+0755 | 1443601145 | 1443600513 |  194912 |  2016-12-07 05:16:40 | specmake
+0755 | 1443601145 | 1443600513 |   31128 |  2016-12-07 05:16:40 | specinvoke
+0755 | 1443601145 | 1443600513 |  315576 |  2016-12-07 05:16:40 | specrxp
+0755 | 1443601145 | 1443600513 |    1530 |  2021-10-19 17:10:24 | runhpc
+0755 | 1443601145 | 1443600513 |  177891 |  2021-10-19 17:10:23 | harness/runhpc
+0755 | 1443601145 | 1443600513 |   89923 |  2021-10-19 17:10:46 | specpp
+0755 | 1443601145 | 1443600513 |   89923 |  2021-10-19 17:10:23 | harness/specpp
+0755 | 1443601145 | 1443600513 |    9761 |  2021-10-19 17:10:23 | harness/specdiff
+0755 | 1443601145 | 1443600513 |  203704 |  2016-12-07 05:16:40 | specxz
+0755 | 1443601145 | 1443600513 |   68224 |  2016-12-07 05:16:40 | specsha512sum
+
+Version info for specperl (specperl): This is specperl 5, version 24, subversion 0 (v5.24.0) built for aarch64-linux
+                                      Compiled at Dec  7 2016 04:49:32
+                                      For more detail on specperl, say 'specperl -V'
+Version info for specmake (specmake): GNU Make 4.2.1
+Version info for specinvoke (specinvoke): specinvoke r4356 (OS implementation r4356)
+Version info for specrxp ($SPEC/bin/specrxp): RXP 1.5.0 Copyright Richard Tobin, LTG, HCRC, University of Edinburgh
+                                              Modified for use in SPEC benchmarks - 14 April 2011
+Version info for specpp ($SPEC/bin/specpp): specpp is not in the search path!
+Version info for specxz ($SPEC/bin/specxz): xz (XZ Utils) 5.2.2
+Version info for specsha512sum ($SPEC/bin/specsha512sum): sha512sum (specsum) 1.3
+
+==============================================================================
+
+1658939540.16: runhpc v.unknown started at 2022-07-27 16:32:19 on "graviton2-dy-c6gn16xlarge-1"
+1658939540.16: runhpc is: /lustre/SPEChpc/bin/harness/runhpc
+1658939540.16: runhpc: runhpc --rebuild --config=aws_g2.cfg --ranks=128 --noreportable --size=test --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu_128 --iterations=2 tiny
+1658939540.16: toolset: linux-aarch64
+
+1658939540.16(0.02s): Locating benchmarks...Created default regexp '(?:^|(?<=\s))[-/]DSPEC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]USPEC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for USPEC in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DNDEBUG(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DNDEBUG in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]UNDEBUG(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for UNDEBUG in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_OPENMP in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_OPENMP_TARGET(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_OPENMP_TARGET in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_OPENACC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_OPENACC in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_ACCEL_AWARE_MPI(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_ACCEL_AWARE_MPI in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_USE_MPIFH(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_USE_MPIFH in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_SPLIT_TARGET_REDUCTION(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_SPLIT_TARGET_REDUCTION in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_OPENMP_LOOP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_OPENMP_LOOP in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_CUDA(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_CUDA in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_HIP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_HIP in /lustre/SPEChpc/benchspec/flags-mandatory.xml
+1658939540.18: Reading suite directory for 'HPC', '/lustre/SPEChpc/benchspec'
+1658939540.19:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '835.weather_l'
+1658939540.19:     Evaluated /lustre/SPEChpc/benchspec/HPC/835.weather_l/Spec/object.pm in 0.002630949s
+1658939540.19:     Instantiated Spec::Benchmark::weather_l835 in 0.000304937s
+1658939540.19:     Finding src.alts took 0.000211000s
+1658939540.19:   Setting up weather_l took 0.004299164s
+
+1658939540.19:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '521.miniswp_t'
+1658939540.19:     Evaluated /lustre/SPEChpc/benchspec/HPC/521.miniswp_t/Spec/object.pm in 0.002603054s
+1658939540.19:     Instantiated Spec::Benchmark::miniswp_t521 in 0.000202179s
+1658939540.19:     Finding src.alts took 0.000208139s
+1658939540.19:   Setting up miniswp_t took 0.003930092s
+
+1658939540.19:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '618.tealeaf_s'
+1658939540.20:     Evaluated /lustre/SPEChpc/benchspec/HPC/618.tealeaf_s/Spec/object.pm in 0.003057003s
+1658939540.20:     Instantiated Spec::Benchmark::tealeaf_s618 in 0.000202894s
+1658939540.20:     Finding src.alts took 0.000464916s
+1658939540.20:   Setting up tealeaf_s took 0.004791021s
+
+1658939540.20:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '805.lbm_l'
+1658939540.20:     Evaluated /lustre/SPEChpc/benchspec/HPC/805.lbm_l/Spec/object.pm in 0.002563953s
+1658939540.20:     Instantiated Spec::Benchmark::lbm_l805 in 0.000186920s
+1658939540.20:     Finding src.alts took 0.000251055s
+1658939540.20:   Setting up lbm_l took 0.004245996s
+
+1658939540.20:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', 'medium.bset'
+1658939540.21:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '705.lbm_m'
+1658939540.21:     Evaluated /lustre/SPEChpc/benchspec/HPC/705.lbm_m/Spec/object.pm in 0.002671003s
+1658939540.21:     Instantiated Spec::Benchmark::lbm_m705 in 0.000189066s
+1658939540.21:     Finding src.alts took 0.000251055s
+1658939540.21:   Setting up lbm_m took 0.004256010s
+
+1658939540.21:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '513.soma_t'
+1658939540.22:     Evaluated /lustre/SPEChpc/benchspec/HPC/513.soma_t/Spec/object.pm in 0.002655029s
+1658939540.22:     Instantiated Spec::Benchmark::soma_t513 in 0.000190020s
+1658939540.22:     Finding src.alts took 0.000220060s
+1658939540.22:   Setting up soma_t took 0.004308939s
+
+1658939540.22:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', 'large.bset'
+1658939540.22:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '818.tealeaf_l'
+1658939540.22:     Evaluated /lustre/SPEChpc/benchspec/HPC/818.tealeaf_l/Spec/object.pm in 0.002779007s
+1658939540.22:     Instantiated Spec::Benchmark::tealeaf_l818 in 0.000189781s
+1658939540.22:     Finding src.alts took 0.000214100s
+1658939540.22:   Setting up tealeaf_l took 0.004374027s
+
+1658939540.22:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '632.sph_exa_s'
+1658939540.23:     Evaluated /lustre/SPEChpc/benchspec/HPC/632.sph_exa_s/Spec/object.pm in 0.002629995s
+1658939540.23:     Instantiated Spec::Benchmark::sph_exa_s632 in 0.000192881s
+1658939540.23:     Finding src.alts took 0.000437975s
+1658939540.23:   Setting up sph_exa_s took 0.004399061s
+
+1658939540.23:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '728.pot3d_m'
+1658939540.23:     Evaluated /lustre/SPEChpc/benchspec/HPC/728.pot3d_m/Spec/object.pm in 0.002654791s
+1658939540.23:     Instantiated Spec::Benchmark::pot3d_m728 in 0.000190020s
+1658939540.23:     Finding src.alts took 0.000210047s
+1658939540.23:   Setting up pot3d_m took 0.004165888s
+
+1658939540.23:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '605.lbm_s'
+1658939540.24:     Evaluated /lustre/SPEChpc/benchspec/HPC/605.lbm_s/Spec/object.pm in 0.002582073s
+1658939540.24:     Instantiated Spec::Benchmark::lbm_s605 in 0.000189066s
+1658939540.24:     Finding src.alts took 0.000407934s
+1658939540.24:   Setting up lbm_s took 0.004273891s
+
+1658939540.24:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '628.pot3d_s'
+1658939540.24:     Evaluated /lustre/SPEChpc/benchspec/HPC/628.pot3d_s/Spec/object.pm in 0.003335953s
+1658939540.24:     Instantiated Spec::Benchmark::pot3d_s628 in 0.000216961s
+1658939540.24:     Finding src.alts took 0.000453949s
+1658939540.24:   Setting up pot3d_s took 0.005140066s
+
+1658939540.24:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '719.clvleaf_m'
+1658939540.25:     Evaluated /lustre/SPEChpc/benchspec/HPC/719.clvleaf_m/Spec/object.pm in 0.002840996s
+1658939540.25:     Instantiated Spec::Benchmark::clvleaf_m719 in 0.000196934s
+1658939540.25:     Finding src.alts took 0.000216007s
+1658939540.25:   Setting up clvleaf_m took 0.004468918s
+
+1658939540.25:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '635.weather_s'
+1658939540.25:     Evaluated /lustre/SPEChpc/benchspec/HPC/635.weather_s/Spec/object.pm in 0.002609015s
+1658939540.25:     Instantiated Spec::Benchmark::weather_s635 in 0.000190020s
+1658939540.25:     Finding src.alts took 0.000416994s
+1658939540.25:   Setting up weather_s took 0.004341841s
+
+1658939540.25:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '534.hpgmgfv_t'
+1658939540.25:     Evaluated /lustre/SPEChpc/benchspec/HPC/534.hpgmgfv_t/Spec/object.pm in 0.002601147s
+1658939540.25:     Instantiated Spec::Benchmark::hpgmgfv_t534 in 0.000188828s
+1658939540.25:     Finding src.alts took 0.000225067s
+1658939540.25:   Setting up hpgmgfv_t took 0.004134893s
+
+1658939540.25:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '519.clvleaf_t'
+1658939540.26:     Evaluated /lustre/SPEChpc/benchspec/HPC/519.clvleaf_t/Spec/object.pm in 0.002855062s
+1658939540.26:     Instantiated Spec::Benchmark::clvleaf_t519 in 0.000194788s
+1658939540.26:     Finding src.alts took 0.000215054s
+1658939540.26:   Setting up clvleaf_t took 0.004192829s
+
+1658939540.26:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '528.pot3d_t'
+1658939540.26:     Evaluated /lustre/SPEChpc/benchspec/HPC/528.pot3d_t/Spec/object.pm in 0.002769947s
+1658939540.26:     Instantiated Spec::Benchmark::pot3d_t528 in 0.000192165s
+1658939540.26:     Finding src.alts took 0.000233889s
+1658939540.26:   Setting up pot3d_t took 0.004111052s
+
+1658939540.26:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '734.hpgmgfv_m'
+1658939540.27:     Evaluated /lustre/SPEChpc/benchspec/HPC/734.hpgmgfv_m/Spec/object.pm in 0.002585888s
+1658939540.27:     Instantiated Spec::Benchmark::hpgmgfv_m734 in 0.000189066s
+1658939540.27:     Finding src.alts took 0.000207186s
+1658939540.27:   Setting up hpgmgfv_m took 0.004152060s
+
+1658939540.27:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '999.specrand'
+1658939540.27:     Evaluated /lustre/SPEChpc/benchspec/HPC/999.specrand/Spec/object.pm in 0.002580881s
+1658939540.27:     Instantiated Spec::Benchmark::specrand999 in 0.000194073s
+1658939540.27:     Finding src.alts took 0.000423193s
+1658939540.27:   Setting up specrand took 0.004456997s
+
+1658939540.27:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '828.pot3d_l'
+1658939540.28:     Evaluated /lustre/SPEChpc/benchspec/HPC/828.pot3d_l/Spec/object.pm in 0.002604961s
+1658939540.28:     Instantiated Spec::Benchmark::pot3d_l828 in 0.000190973s
+1658939540.28:     Finding src.alts took 0.000208855s
+1658939540.28:   Setting up pot3d_l took 0.004105806s
+
+1658939540.28:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '532.sph_exa_t'
+1658939540.28:     Evaluated /lustre/SPEChpc/benchspec/HPC/532.sph_exa_t/Spec/object.pm in 0.002566099s
+1658939540.28:     Instantiated Spec::Benchmark::sph_exa_t532 in 0.000191927s
+1658939540.28:     Finding src.alts took 0.000213146s
+1658939540.28:   Setting up sph_exa_t took 0.004071951s
+
+1658939540.28:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', 'hpc.bset'
+1658939540.28:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '634.hpgmgfv_s'
+1658939540.29:     Evaluated /lustre/SPEChpc/benchspec/HPC/634.hpgmgfv_s/Spec/object.pm in 0.002588034s
+1658939540.29:     Instantiated Spec::Benchmark::hpgmgfv_s634 in 0.000187159s
+1658939540.29:     Finding src.alts took 0.000399113s
+1658939540.29:   Setting up hpgmgfv_s took 0.004298925s
+
+1658939540.29:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '535.weather_t'
+1658939540.29:     Evaluated /lustre/SPEChpc/benchspec/HPC/535.weather_t/Spec/object.pm in 0.002535105s
+1658939540.29:     Instantiated Spec::Benchmark::weather_t535 in 0.000189066s
+1658939540.29:     Finding src.alts took 0.000241995s
+1658939540.29:   Setting up weather_t took 0.004071951s
+
+1658939540.29:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '735.weather_m'
+1658939540.29:     Evaluated /lustre/SPEChpc/benchspec/HPC/735.weather_m/Spec/object.pm in 0.002519846s
+1658939540.29:     Instantiated Spec::Benchmark::weather_m735 in 0.000186920s
+1658939540.30:     Finding src.alts took 0.000218153s
+1658939540.30:   Setting up weather_m took 0.004039049s
+
+1658939540.30:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '619.clvleaf_s'
+1658939540.30:     Evaluated /lustre/SPEChpc/benchspec/HPC/619.clvleaf_s/Spec/object.pm in 0.003160954s
+1658939540.30:     Instantiated Spec::Benchmark::clvleaf_s619 in 0.000200033s
+1658939540.30:     Finding src.alts took 0.000416994s
+1658939540.30:   Setting up clvleaf_s took 0.004920006s
+
+1658939540.30:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', 'tiny.bset'
+1658939540.30:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '621.miniswp_s'
+1658939540.31:     Evaluated /lustre/SPEChpc/benchspec/HPC/621.miniswp_s/Spec/object.pm in 0.002722979s
+1658939540.31:     Instantiated Spec::Benchmark::miniswp_s621 in 0.000192165s
+1658939540.31:     Finding src.alts took 0.000415087s
+1658939540.31:   Setting up miniswp_s took 0.004493952s
+
+1658939540.31:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '505.lbm_t'
+1658939540.31:     Evaluated /lustre/SPEChpc/benchspec/HPC/505.lbm_t/Spec/object.pm in 0.002485991s
+1658939540.31:     Instantiated Spec::Benchmark::lbm_t505 in 0.000185013s
+1658939540.31:     Finding src.alts took 0.000214100s
+1658939540.31:   Setting up lbm_t took 0.003983974s
+
+1658939540.31:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '834.hpgmgfv_l'
+1658939540.32:     Evaluated /lustre/SPEChpc/benchspec/HPC/834.hpgmgfv_l/Spec/object.pm in 0.002616882s
+1658939540.32:     Instantiated Spec::Benchmark::hpgmgfv_l834 in 0.000190973s
+1658939540.32:     Finding src.alts took 0.000224829s
+1658939540.32:   Setting up hpgmgfv_l took 0.004213095s
+
+1658939540.32:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '819.clvleaf_l'
+1658939540.32:     Evaluated /lustre/SPEChpc/benchspec/HPC/819.clvleaf_l/Spec/object.pm in 0.002793074s
+1658939540.32:     Instantiated Spec::Benchmark::clvleaf_l819 in 0.000196934s
+1658939540.32:     Finding src.alts took 0.000231981s
+1658939540.32:   Setting up clvleaf_l took 0.004327059s
+
+1658939540.32:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '518.tealeaf_t'
+1658939540.32:     Evaluated /lustre/SPEChpc/benchspec/HPC/518.tealeaf_t/Spec/object.pm in 0.002768993s
+1658939540.32:     Instantiated Spec::Benchmark::tealeaf_t518 in 0.000185966s
+1658939540.33:     Finding src.alts took 0.000237942s
+1658939540.33:   Setting up tealeaf_t took 0.004374981s
+
+1658939540.33:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', 'small.bset'
+1658939540.33:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '718.tealeaf_m'
+1658939540.33:     Evaluated /lustre/SPEChpc/benchspec/HPC/718.tealeaf_m/Spec/object.pm in 0.002630949s
+1658939540.33:     Instantiated Spec::Benchmark::tealeaf_m718 in 0.000186920s
+1658939540.33:     Finding src.alts took 0.000216007s
+1658939540.33:   Setting up tealeaf_m took 0.004257202s
+
+1658939540.33:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/HPC', '/lustre/SPEChpc/benchspec', '613.soma_s'
+1658939540.34:     Evaluated /lustre/SPEChpc/benchspec/HPC/613.soma_s/Spec/object.pm in 0.002700090s
+1658939540.34:     Instantiated Spec::Benchmark::soma_s613 in 0.000190973s
+1658939540.34:     Finding src.alts took 0.000496149s
+1658939540.34:   Setting up soma_s took 0.004588127s
+
+1658939540.34: Setting up suite took 0.153210878s
+1658939540.34: Reading suite directory for 'flags-mandatory.xml', '/lustre/SPEChpc/benchspec'
+1658939540.34: Reading suite directory for 'version.txt', '/lustre/SPEChpc/benchspec'
+1658939540.34: Reading suite directory for 'common', '/lustre/SPEChpc/benchspec'
+1658939540.34:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/common', '/lustre/SPEChpc/benchspec', 'specrand'
+1658939540.34:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/common', '/lustre/SPEChpc/benchspec', 'sha-2'
+1658939540.34:   Reading benchmark directory for '/lustre/SPEChpc/benchspec/common', '/lustre/SPEChpc/benchspec', 'spec_qsort'
+1658939540.34: Setting up suite took 0.001050949s
+1658939540.34: Reading suite directory for 'Makefile.defaults', '/lustre/SPEChpc/benchspec'
+1658939540.34: found 31 benchmarks in 5 benchsets.
+1658939540.35: Reading config file '/lustre/SPEChpc/config/aws_g2.cfg'
+1658939540.35: NOTICE: Skipping expression evaluation for 'label' on line 2 of
+1658939540.35:         /lustre/SPEChpc/config/aws_g2.cfg
+1658939540.35: NOTICE: Skipping expression evaluation for 'model' on line 6 of
+1658939540.35:         /lustre/SPEChpc/config/aws_g2.cfg
+1658939540.36: Reading included config file '/lustre/SPEChpc/config/aws.inc'
+1658939540.36: WARNING: Duplicate setting for "node_compute_sw_os000" on line 28
+1658939540.36:          of /lustre/SPEChpc/config/aws_g2.cfg
+1658939540.36: WARNING: Duplicate setting for "node_compute_sw_os001" on line 29
+1658939540.36:          of /lustre/SPEChpc/config/aws_g2.cfg
+
+1658939540.40:   '505.lbm_t' added
+1658939540.40:   '513.soma_t' added
+1658939540.40:   '518.tealeaf_t' added
+1658939540.40:   '519.clvleaf_t' added
+1658939540.40:   '521.miniswp_t' added
+1658939540.40:   '528.pot3d_t' added
+1658939540.40:   '532.sph_exa_t' added
+1658939540.40:   '534.hpgmgfv_t' added
+1658939540.40:   '535.weather_t' added
+
+
+1658939540.40: 1 configuration selected:
+
+1658939540.40:  Action    Run Mode   Workload     Report Type     Benchmarks
+1658939540.40: --------   --------   --------   ---------------   ----------------------------
+1658939540.40: validate   speed      test       SPEChpc2021_tny   tiny                        
+1658939540.40: -------------------------------------------------------------------------------
+
+1658939540.41: Verbosity = 5
+1658939540.41: Action    = validate
+1658939540.41: Tune      = base
+1658939540.41: Label     = aws_mpi
+1658939540.41: Size      = test
+1658939540.41: benchmarks= 505.lbm_t,513.soma_t,518.tealeaf_t,519.clvleaf_t,521.miniswp_t,528.pot3d_t,532.sph_exa_t,534.hpgmgfv_t,535.weather_t
+1658939540.41: outputs   = all
+1658939540.41: username  = sam
+1658939540.41: Benchmarks selected: 505.lbm_t, 513.soma_t, 518.tealeaf_t, 519.clvleaf_t, 521.miniswp_t, 528.pot3d_t, 532.sph_exa_t, 534.hpgmgfv_t, 535.weather_t
+1658939540.48: Found reftime file in /lustre/SPEChpc/benchspec/HPC/505.lbm_t/data/test
+1658939540.48: Found input directory under /lustre/SPEChpc/benchspec/HPC/505.lbm_t/data/test
+1658939540.48: Found output directory under /lustre/SPEChpc/benchspec/HPC/505.lbm_t/data/test
+1658939540.49: Found reftime file in /lustre/SPEChpc/benchspec/HPC/513.soma_t/data/test
+1658939540.49: Found input directory under /lustre/SPEChpc/benchspec/HPC/513.soma_t/data/test
+1658939540.49: Found output directory under /lustre/SPEChpc/benchspec/HPC/513.soma_t/data/test
+1658939540.49: Found reftime file in /lustre/SPEChpc/benchspec/HPC/518.tealeaf_t/data/test
+1658939540.49: Found input directory under /lustre/SPEChpc/benchspec/HPC/518.tealeaf_t/data/test
+1658939540.49: Found output directory under /lustre/SPEChpc/benchspec/HPC/518.tealeaf_t/data/test
+1658939540.49: Found reftime file in /lustre/SPEChpc/benchspec/HPC/519.clvleaf_t/data/test
+1658939540.49: Found input directory under /lustre/SPEChpc/benchspec/HPC/519.clvleaf_t/data/test
+1658939540.49: Found output directory under /lustre/SPEChpc/benchspec/HPC/519.clvleaf_t/data/test
+1658939540.49: Found reftime file in /lustre/SPEChpc/benchspec/HPC/521.miniswp_t/data/test
+1658939540.50: Found input directory under /lustre/SPEChpc/benchspec/HPC/521.miniswp_t/data/test
+1658939540.50: Found output directory under /lustre/SPEChpc/benchspec/HPC/521.miniswp_t/data/test
+1658939540.52: Found reftime file in /lustre/SPEChpc/benchspec/HPC/528.pot3d_t/data/test
+1658939540.52: Found input directory under /lustre/SPEChpc/benchspec/HPC/528.pot3d_t/data/test
+1658939540.52: Found output directory under /lustre/SPEChpc/benchspec/HPC/528.pot3d_t/data/test
+1658939540.52: Found reftime file in /lustre/SPEChpc/benchspec/HPC/532.sph_exa_t/data/test
+1658939540.52: Found input directory under /lustre/SPEChpc/benchspec/HPC/532.sph_exa_t/data/test
+1658939540.52: Found output directory under /lustre/SPEChpc/benchspec/HPC/532.sph_exa_t/data/test
+1658939540.53: Found reftime file in /lustre/SPEChpc/benchspec/HPC/534.hpgmgfv_t/data/test
+1658939540.53: Found input directory under /lustre/SPEChpc/benchspec/HPC/534.hpgmgfv_t/data/test
+1658939540.53: Found output directory under /lustre/SPEChpc/benchspec/HPC/534.hpgmgfv_t/data/test
+1658939540.53: Found reftime file in /lustre/SPEChpc/benchspec/HPC/535.weather_t/data/test
+1658939540.53: Found input directory under /lustre/SPEChpc/benchspec/HPC/535.weather_t/data/test
+1658939540.53: Found output directory under /lustre/SPEChpc/benchspec/HPC/535.weather_t/data/test
+1658939540.53: Compiling Binaries
+
+1658939540.53: ------------------------------------------------------------------------
+1658939540.55:   Building 505.lbm_t base aws_mpi: (build_base_aws_mpi.0000) [2022-07-27 16:32:20]
+1658939540.57:    Using existing directory at '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/505.lbm_t/build/build_base_aws_mpi.0000' for 505.lbm_t base aws_mpi build
+1658939540.72: Comparing SHA-512 hashes:
+1658939540.72:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /lustre/SPEChpc/benchspec/HPC/605.lbm_s/src/Makefile
+1658939540.72:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/505.lbm_t/build/build_base_aws_mpi.0000/Makefile
+1658939540.73: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/505.lbm_t/build/build_base_aws_mpi.0000/Makefile.deps':
+
+
+1658939540.73: # End dependencies
+1658939540.73: # These are the build dependencies
+1658939540.73: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/505.lbm_t/build/build_base_aws_mpi.0000/Makefile.spec':
+1658939540.73: TUNE=base
+1658939540.73: LABEL=aws_mpi
+1658939540.73: NUMBER=505
+1658939540.73: NAME=lbm_t
+1658939540.73: SOURCES= lbm.c main.c specrand/specrand.c
+1658939540.73: EXEBASE=lbm
+1658939540.73: NEED_MATH=yes
+1658939540.73: USE_SPACK=
+1658939540.73: BENCHLANG=C
+
+1658939540.73: CC               = mpicc
+1658939540.73: CC_VERSION_OPTION = --version
+1658939540.73: COPTIMIZE        = -lm
+1658939540.73: CXX              = mpicxx
+1658939540.73: CXX_VERSION_OPTION = --version
+1658939540.73: FC               = mpifort
+1658939540.73: FC_VERSION_OPTION = --version
+1658939540.73: MPIRUN_OPTS      = --map-by ppr:64:node
+1658939540.73: OPTIMIZE         = -Ofast
+1658939540.73: OS               = unix
+1658939540.73: PMODEL           = 
+1658939540.73: absolutely_no_locking = 0
+1658939540.73: abstol           = 4e-07
+1658939540.73: action           = validate
+1658939540.73: allow_label_override = 0
+1658939540.73: backup_config    = 1
+1658939540.73: baseexe          = lbm
+1658939540.73: basepeak         = 0
+1658939540.73: benchdir         = benchspec
+1658939540.73: benchmark        = 505.lbm_t
+1658939540.73: binary           = 
+1658939540.73: bindir           = exe
+1658939540.73: builddir         = build
+1658939540.73: bundleaction     = 
+1658939540.73: bundlename       = 
+1658939540.73: calctol          = 1
+1658939540.73: changedhash      = 0
+1658939540.73: check_version    = 0
+1658939540.73: clean_between_builds = no
+1658939540.73: command_add_redirect = 0
+1658939540.73: commanderrfile   = speccmds.err
+1658939540.73: commandexe       = lbm_base.aws_mpi
+1658939540.73: commandfile      = speccmds.cmd
+1658939540.73: commandoutfile   = speccmds.out
+1658939540.73: commandstdoutfile = speccmds.stdout
+1658939540.73: comparedir       = compare
+1658939540.73: compareerrfile   = compare.err
+1658939540.73: comparefile      = compare.cmd
+1658939540.73: compareoutfile   = compare.out
+1658939540.73: comparestdoutfile = compare.stdout
+1658939540.73: compile_error    = 0
+1658939540.73: compwhite        = 
+1658939540.73: configdir        = config
+1658939540.73: configfile       = aws_g2.cfg
+1658939540.73: configpath       = /lustre/SPEChpc/config/aws_g2.cfg
+1658939540.73: copies           = 1
+1658939540.73: current_range    = 
+1658939540.73: datadir          = data
+1658939540.73: default_size     = ref
+1658939540.73: default_submit   = $command
+1658939540.73: delay            = 0
+1658939540.73: deletebinaries   = 0
+1658939540.73: deletework       = 0
+1658939540.73: dependent_workloads = 0
+1658939540.73: device           = 
+1658939540.73: difflines        = 10
+1658939540.73: dirprot          = 511
+1658939540.73: discard_power_samples = 1
+1658939540.73: enable_monitor   = 1
+1658939540.73: endian           = 12345678
+1658939540.73: env_vars         = 0
+1658939540.73: expand_notes     = 0
+1658939540.73: expid            = 
+1658939540.73: exthash_bits     = 0
+1658939540.73: failflags        = 0
+1658939540.73: fake             = 0
+1658939540.73: feedback         = 1
+1658939540.73: flag_url_base    = https://www.spec.org/auto/hpc2021/Docs/benchmarks/flags/
+1658939540.73: floatcompare     = 
+1658939540.73: force_monitor    = 0
+1658939540.73: hostname         = graviton2-dy-c6gn16xlarge-1
+1658939540.73: http_proxy       = 
+1658939540.73: http_timeout     = 30
+1658939540.73: hw_avail         = Nov-2099
+1658939540.73: idle_current_range = 
+1658939540.73: idledelay        = 10
+1658939540.73: idleduration     = 60
+1658939540.73: ignore_errors    = 0
+1658939540.73: ignore_sigint    = 0
+1658939540.73: ignorecase       = 
+1658939540.73: info_wrap_columns = 50
+1658939540.73: inputdir         = input
+1658939540.73: inputgenerrfile  = inputgen.err
+1658939540.73: inputgenfile     = inputgen.cmd
+1658939540.73: inputgenoutfile  = inputgen.out
+1658939540.73: inputgenstdoutfile = inputgen.stdout
+1658939540.73: interconnect_fs_hw_model = BI 100 Series
+1658939540.73: interconnect_fs_hw_switch_fs_count = 1
+1658939540.73: interconnect_fs_hw_switch_fs_data_rate = 100 Gb/s
+1658939540.73: interconnect_fs_hw_switch_fs_firmware = 10.3.0.0.60
+1658939540.73: interconnect_fs_hw_switch_fs_model000 = BI 100 Series 48 Port 2
+1658939540.73: interconnect_fs_hw_switch_fs_model001 = PSU
+1658939540.73: interconnect_fs_hw_switch_fs_ports = 48
+1658939540.73: interconnect_fs_hw_topo = Mesh
+1658939540.73: interconnect_fs_hw_vendor = Big Interconnect Company
+1658939540.73: interconnect_fs_order = 0
+1658939540.73: interconnect_fs_purpose = MPI Traffic
+1658939540.73: interconnect_fs_syslbl = Big Interconnect Company
+1658939540.73: islibrary        = 0
+1658939540.73: iteration        = -1
+1658939540.73: iterations       = 2
+1658939540.73: keeptmp          = 0
+1658939540.73: label            = aws_mpi
+1658939540.73: license_num      = ?
+1658939540.73: line_width       = 0
+1658939540.73: link_input_files = 1
+1658939540.73: locking          = 1
+1658939540.73: log              = hpc2021
+1658939540.73: log_line_width   = 0
+1658939540.73: log_timestamp    = 0
+1658939540.73: logname          = /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log
+1658939540.73: lognum           = 002
+1658939540.73: mail_reports     = all
+1658939540.73: mailcompress     = 0
+1658939540.73: mailmethod       = smtp
+1658939540.73: mailport         = 25
+1658939540.73: mailserver       = 127.0.0.1
+1658939540.73: mailto           = 
+1658939540.73: make             = specmake
+1658939540.73: make_no_clobber  = 0
+1658939540.73: makefile_template = Makefile.YYYtArGeTYYYspec
+1658939540.73: makeflags        = -j 10
+1658939540.73: max_average_uncertainty = 1
+1658939540.73: max_hum_limit    = 0
+1658939540.73: max_report_runs  = 0
+1658939540.73: max_unknown_uncertainty = 1
+1658939540.73: mean_anyway      = 0
+1658939540.73: meter_connect_timeout = 30
+1658939540.73: meter_errors_default = 5
+1658939540.73: meter_errors_percentage = 5
+1658939540.73: min_report_runs  = 2
+1658939540.73: min_temp_limit   = 20
+1658939540.73: minimize_builddirs = 0
+1658939540.73: minimize_rundirs = 0
+1658939540.73: name             = lbm_t
+1658939540.73: nansupport       = 
+1658939540.73: need_math        = yes
+1658939540.73: no_input_handler = close
+1658939540.73: no_monitor       = 
+1658939540.73: node_compute_count = 8
+1658939540.73: node_compute_hw_accel_connect = PCIe 3.0 16x
+1658939540.73: node_compute_hw_accel_count = 4
+1658939540.73: node_compute_hw_accel_desc = See Notes
+1658939540.73: node_compute_hw_accel_ecc = Yes
+1658939540.73: node_compute_hw_accel_model = Tesla V100-PCIE-16GB
+1658939540.73: node_compute_hw_accel_type = GPU
+1658939540.73: node_compute_hw_accel_vendor = NVIDIA Corporation
+1658939540.73: node_compute_hw_adapter_fs_count = 0
+1658939540.73: node_compute_hw_adapter_fs_data_rate = None
+1658939540.73: node_compute_hw_adapter_fs_driver = None
+1658939540.73: node_compute_hw_adapter_fs_firmware = None
+1658939540.73: node_compute_hw_adapter_fs_interconnect = None
+1658939540.73: node_compute_hw_adapter_fs_model = None
+1658939540.73: node_compute_hw_adapter_fs_ports_used = 0
+1658939540.73: node_compute_hw_adapter_fs_slot_type = None
+1658939540.73: node_compute_hw_cpu_char = Turbo up to 3.4 GHz
+1658939540.73: node_compute_hw_cpu_mhz = 2250
+1658939540.73: node_compute_hw_cpu_name = Turbo CPU
+1658939540.73: node_compute_hw_disk = 1 x 480 GB  SATA 2.5" SSD
+1658939540.73: node_compute_hw_memory = 256 GB (8 x 32 GB 2Rx8 PC4-3200AA-R)
+1658939540.73: node_compute_hw_model = Turblaster 5000
+1658939540.73: node_compute_hw_nchips = 1
+1658939540.73: node_compute_hw_ncores = 64
+1658939540.73: node_compute_hw_ncoresperchip = 64
+1658939540.73: node_compute_hw_ncpuorder = 1 chips
+1658939540.73: node_compute_hw_nthreadspercore = 1
+1658939540.73: node_compute_hw_ocache = None
+1658939540.73: node_compute_hw_other = None
+1658939540.73: node_compute_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939540.73: node_compute_hw_scache = 512 KB I+D on chip per core
+1658939540.73: node_compute_hw_tcache000 = 256 MB I+D on chip per chip
+1658939540.73: node_compute_hw_tcache001 = 16 MB shared / 4 cores
+1658939540.73: node_compute_hw_vendor = Mega Technology
+1658939540.73: node_compute_order = 1
+1658939540.73: node_compute_purpose = compute
+1658939540.73: node_compute_sw_localfile = xfs
+1658939540.73: node_compute_sw_os000 = Amazon Linux 2
+1658939540.73: node_compute_sw_os001 = Linux 5.10.112-108.499.amzn2.aarch64
+1658939540.73: node_compute_sw_other = None
+1658939540.73: node_compute_sw_sharedfile = None
+1658939540.73: node_compute_sw_state = Multi-user, run level 3
+1658939540.73: node_compute_syslbl = TurboBlaster 5000
+1658939540.73: node_fileserver_count = 1
+1658939540.73: node_fileserver_hw_adapter_fs_count = 1
+1658939540.73: node_fileserver_hw_adapter_fs_data_rate = 100 Gb/s
+1658939540.73: node_fileserver_hw_adapter_fs_driver = 10.9.1.0.15
+1658939540.73: node_fileserver_hw_adapter_fs_firmware = 10.9.0.1.0
+1658939540.73: node_fileserver_hw_adapter_fs_interconnect = BG 5000 series
+1658939540.73: node_fileserver_hw_adapter_fs_ports_used = 1
+1658939540.73: node_fileserver_hw_adapter_fs_slot_type = PCI-Express 3.0 x16
+1658939540.73: node_fileserver_hw_cpu_char = None
+1658939540.73: node_fileserver_hw_cpu_mhz = 2700
+1658939540.73: node_fileserver_hw_cpu_name = Intel Xeon Platinum 8280
+1658939540.73: node_fileserver_hw_disk = 1 x 1 TB 12 Gbps SAS 2.5" SSD (JBOD)
+1658939540.73: node_fileserver_hw_memory = 768 GB (24 x 32 GB 2Rx4 PC4-2933Y-R)
+1658939540.73: node_fileserver_hw_model = BG650
+1658939540.73: node_fileserver_hw_nchips = 2
+1658939540.73: node_fileserver_hw_ncores = 56
+1658939540.73: node_fileserver_hw_ncoresperchip = 28
+1658939540.73: node_fileserver_hw_ncpuorder = 1-2 chips
+1658939540.73: node_fileserver_hw_nthreadspercore = 1
+1658939540.73: node_fileserver_hw_ocache = None
+1658939540.73: node_fileserver_hw_other = None
+1658939540.73: node_fileserver_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939540.73: node_fileserver_hw_scache = 1 MB I+D on chip per core
+1658939540.73: node_fileserver_hw_tcache = 39424 KB I+D on chip per chip
+1658939540.73: node_fileserver_hw_vendor = Big Storage Company
+1658939540.73: node_fileserver_order = 2
+1658939540.73: node_fileserver_purpose = Fileserver
+1658939540.73: node_fileserver_sw_localfile = None
+1658939540.73: node_fileserver_sw_os = Red Hat Enterprise Linux Server release 7.6
+1658939540.73: node_fileserver_sw_other = None
+1658939540.73: node_fileserver_sw_sharedfile = NFS
+1658939540.73: node_fileserver_sw_state = Multi-User, run level 3
+1658939540.73: node_fileserver_syslbl = NFS
+1658939540.73: noratios         = 0
+1658939540.73: note_preenv      = 0
+1658939540.73: notes_wrap_columns = 0
+1658939540.73: notes_wrap_indent =   
+1658939540.73: num              = 505
+1658939540.73: obiwan           = 
+1658939540.73: os_exe_ext       = 
+1658939540.73: output_format    = all
+1658939540.73: output_root      = /home/sam/g2_spec_results/tiny/tiny_gnu_128
+1658939540.73: outputdir        = output
+1658939540.73: parallel_test    = 0
+1658939540.73: parallel_test_submit = 0
+1658939540.73: parallel_test_workloads = 
+1658939540.73: path             = /lustre/SPEChpc/benchspec/HPC/505.lbm_t
+1658939540.73: plain_train      = 0
+1658939540.73: platform         = 
+1658939540.73: pmodel           = MPI
+1658939540.73: power            = 0
+1658939540.73: preenv           = 1
+1658939540.73: prefix           = 
+1658939540.73: ranks            = 128
+1658939540.73: rawhash_bits     = 256
+1658939540.73: rebuild          = 1
+1658939540.73: reftime          = reftime
+1658939540.73: reltol           = 0.006
+1658939540.73: reportable       = 0
+1658939540.73: resultdir        = result
+1658939540.73: review           = 0
+1658939540.73: run              = all
+1658939540.73: rundir           = run
+1658939540.73: runhpc           = /lustre/SPEChpc/bin/harness/runhpc --rebuild --config=aws_g2.cfg --ranks=128 --noreportable --size=test --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu_128 --iterations=2 tiny
+1658939540.73: runmode          = speed
+1658939540.73: safe_eval        = 1
+1658939540.73: save_build_files = 
+1658939540.73: section_specifier_fatal = 1
+1658939540.73: setprocgroup     = 1
+1658939540.73: setup_error      = 0
+1658939540.73: sigint           = 2
+1658939540.73: size             = test
+1658939540.73: size_class       = test
+1658939540.73: skipabstol       = 
+1658939540.73: skipobiwan       = 
+1658939540.73: skipreltol       = 
+1658939540.73: skiptol          = 
+1658939540.73: smarttune        = base
+1658939540.73: specdiff         = specdiff
+1658939540.73: specrun          = specinvoke
+1658939540.73: srcalt           = 
+1658939540.73: srcdir           = src
+1658939540.73: srcsource        = /lustre/SPEChpc/benchspec/HPC/605.lbm_s/src
+1658939540.73: stagger          = 10
+1658939540.73: strict_rundir_verify = 1
+1658939540.73: submit_default   = mpirun -np $ranks ${MPIRUN_OPTS} $command
+1658939540.73: sw_avail         = Nov-2099
+1658939540.73: sw_compiler000   = C/C++/Fortran: GCC Version 9.3.0
+1658939540.73: sw_mpi_library000 = OpenMPI Version 4.1.3
+1658939540.73: sysinfo_hash_bits = 256
+1658939540.73: sysinfo_program  = 
+1658939540.73: sysinfo_program_hash = 
+1658939540.73: system_name      = Big Compute
+1658939540.73: system_vendor    = Mega Technology
+1658939540.73: table            = 1
+1658939540.73: teeout           = yes
+1658939540.73: test_date        = Jul-2022
+1658939540.73: test_sponsor     = University of Bristol
+1658939540.73: tester           = University of Bristol
+1658939540.73: threads          = 1
+1658939540.73: top              = /lustre/SPEChpc
+1658939540.73: train_single_thread = 0
+1658939540.73: train_with       = train
+1658939540.73: tune             = base
+1658939540.73: uid              = 1443601145
+1658939540.73: unbuffer         = 1
+1658939540.73: uncertainty_exception = 5
+1658939540.73: update           = 0
+1658939540.73: update_url       = http://www.spec.org/auto/hpc2021/updates/
+1658939540.73: use_spack        = 
+1658939540.73: use_submit_for_compare = 0
+1658939540.73: use_submit_for_speed = 1
+1658939540.73: username         = sam
+1658939540.73: verbose          = 5
+1658939540.73: verify_binaries  = 1
+1658939540.73: version          = 1.000003
+1658939540.73: version_url      = http://www.spec.org/auto/hpc2021/devel_version
+1658939540.73: voltage_range    = 
+1658939540.73: worklist         = list
+1658939540.73: OUTPUT_RMFILES   = lbm.out
+1658939540.73:   Compile for '505.lbm_t' started at: 2022-07-27 16:32:20 (1658939540)
+1658939540.74: Issuing make.clean command 'specmake --output-sync -j 10 clean'
+1658939540.74: specmake --output-sync -j 10 clean
+1658939540.74: Start make.clean command: 2022-07-27 16:32:20 (1658939540.744)
+1658939540.85: rm -rf *.o  lbm.out
+1658939540.85: find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+1658939540.85: rm -rf lbm
+1658939540.85: rm -rf lbm.exe
+1658939540.85: rm -rf core
+1658939540.94: Stop make.clean command: 2022-07-27 16:32:20 (1658939540.94008)
+1658939540.94: Elapsed time for make.clean command: 00:00:00 (0.1960768699646)
+1658939540.95: Issuing make command 'specmake --output-sync -j 10 build'
+1658939540.95: specmake --output-sync -j 10 build
+1658939540.95: Start make command: 2022-07-27 16:32:20 (1658939540.95067)
+1658939541.16: mpicc -c -o specrand/specrand.o -DSPEC -DNDEBUG   -Ofast -lm                 specrand/specrand.c
+1658939541.36: mpicc -c -o main.o -DSPEC -DNDEBUG   -Ofast -lm                 main.c
+1658939544.06: mpicc -c -o lbm.o -DSPEC -DNDEBUG   -Ofast -lm                 lbm.c
+1658939544.06: mpicc      -Ofast -lm         lbm.o main.o specrand/specrand.o             -lm         -o lbm  
+1658939544.19: Stop make command: 2022-07-27 16:32:24 (1658939544.19141)
+1658939544.19: Elapsed time for make command: 00:00:03 (3.24073600769043)
+1658939544.19: Issuing options command 'specmake --output-sync -j 10 options'
+1658939544.19: specmake --output-sync -j 10 options
+1658939544.19: Start options command: 2022-07-27 16:32:24 (1658939544.19273)
+
+1658939544.30: COMP: "mpicc -c -o options.o -DSPEC -DNDEBUG   -Ofast -lm                 <source>"
+1658939544.30: C: CC="mpicc"
+1658939544.30: C: COBJOPT="-c -o options"
+1658939544.30: P: CPUFLAGS="-DSPEC -DNDEBUG"
+1658939544.30: P: BENCH_FLAGS=""
+1658939544.30: P: BENCH_CFLAGS=""
+1658939544.30: O: OPTIMIZE="-Ofast"
+1658939544.30: O: COPTIMIZE="-lm"
+1658939544.30: P: PORTABILITY=""
+1658939544.30: P: CPORTABILITY=""
+1658939544.30: O: EXTRA_CFLAGS=""
+1658939544.30: O: EXTRA_OPTIMIZE=""
+1658939544.30: O: EXTRA_COPTIMIZE=""
+1658939544.30: P: EXTRA_PORTABILITY=""
+1658939544.30: P: EXTRA_CPORTABILITY=""
+1658939544.30: LINK: "mpicc      -Ofast -lm         <objects>   -lm         -o options  "
+1658939544.30: C: LD="mpicc"
+1658939544.30: O: OPTIMIZE="-Ofast"
+1658939544.30: O: COPTIMIZE="-lm"
+1658939544.30: C: MATH_LIBS="-lm"
+1658939544.30: C: LDOUT="-o options"
+1658939544.43: Stop options command: 2022-07-27 16:32:24 (1658939544.42575)
+1658939544.43: Elapsed time for options command: 00:00:00 (0.233017921447754)
+1658939544.44: Issuing compiler-version command 'specmake --output-sync -j 10 compiler-version'
+1658939544.44: specmake --output-sync -j 10 compiler-version
+1658939544.44: Start compiler-version command: 2022-07-27 16:32:24 (1658939544.4421)
+
+1658939544.75:  CC_VERSION_OPTION:
+
+1658939544.75: gcc (Spack GCC) 9.3.0
+1658939544.75: Copyright (C) 2019 Free Software Foundation, Inc.
+1658939544.75: This is free software; see the source for copying conditions.  There is NO
+1658939544.75: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1658939544.87: Stop compiler-version command: 2022-07-27 16:32:24 (1658939544.86845)
+1658939544.87: Elapsed time for compiler-version command: 00:00:00 (0.426347970962524)
+1658939544.87:   Compile for '505.lbm_t' ended at: 2022-07-27 16:32:24 (1658939544)
+1658939544.87:   Elapsed compile for '505.lbm_t': 00:00:04 (4)
+1658939544.88: Comparing SHA-512 hashes:
+1658939544.88:   286ac41c892a095d7416661be5f1dac61dfdb74b9021e7c065d2a11892fc0597364a24e6aee51fd313fae75b4f9c0a18b4850b652551fbebda4ce45e271f5008 lbm
+1658939544.88:   286ac41c892a095d7416661be5f1dac61dfdb74b9021e7c065d2a11892fc0597364a24e6aee51fd313fae75b4f9c0a18b4850b652551fbebda4ce45e271f5008 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/505.lbm_t/exe/lbm_base.aws_mpi
+
+1658939545.03: COMP: "mpicc -c -o options.o -DSPEC -DNDEBUG   -Ofast -lm                 <source>"
+1658939545.03: C: CC="mpicc"
+1658939545.03: C: COBJOPT="-c -o options"
+1658939545.03: P: CPUFLAGS="-DSPEC -DNDEBUG"
+1658939545.03: P: BENCH_FLAGS=""
+1658939545.03: P: BENCH_CFLAGS=""
+1658939545.03: O: OPTIMIZE="-Ofast"
+1658939545.03: O: COPTIMIZE="-lm"
+1658939545.03: P: PORTABILITY=""
+1658939545.03: P: CPORTABILITY=""
+1658939545.03: O: EXTRA_CFLAGS=""
+1658939545.03: O: EXTRA_OPTIMIZE=""
+1658939545.03: O: EXTRA_COPTIMIZE=""
+1658939545.03: P: EXTRA_PORTABILITY=""
+1658939545.03: P: EXTRA_CPORTABILITY=""
+1658939545.03: LINK: "mpicc      -Ofast -lm         <objects>   -lm         -o options  "
+1658939545.03: C: LD="mpicc"
+1658939545.03: O: OPTIMIZE="-Ofast"
+1658939545.03: O: COPTIMIZE="-lm"
+1658939545.03: C: MATH_LIBS="-lm"
+1658939545.03: C: LDOUT="-o options"
+
+1658939545.24:  CC_VERSION_OPTION:
+
+1658939545.24: gcc (Spack GCC) 9.3.0
+1658939545.24: Copyright (C) 2019 Free Software Foundation, Inc.
+1658939545.24: This is free software; see the source for copying conditions.  There is NO
+1658939545.24: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1658939545.34: update_config_exehash(Spec::Config=HASH(0x3669dd40), aws_mpi) called
+1658939545.34: Found new hash signature for 505.lbm_t=base=aws_mpi
+1658939545.34: Updating config file /lustre/SPEChpc/config/aws_g2.cfg
+1658939545.34: /lustre/SPEChpc/config/aws_g2.cfg will be saved as /lustre/SPEChpc/config/aws_g2.cfg.2022-07-27T163225
+
+1658939545.35: ------------------------------------------------------------------------
+1658939545.37:   Building 513.soma_t base aws_mpi: (build_base_aws_mpi.0000) [2022-07-27 16:32:25]
+1658939545.43:    Using existing directory at '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/513.soma_t/build/build_base_aws_mpi.0000' for 513.soma_t base aws_mpi build
+1658939545.71: Comparing SHA-512 hashes:
+1658939545.71:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /lustre/SPEChpc/benchspec/HPC/613.soma_s/src/Makefile
+1658939545.71:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/513.soma_t/build/build_base_aws_mpi.0000/Makefile
+1658939545.72: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/513.soma_t/build/build_base_aws_mpi.0000/Makefile.deps':
+
+
+1658939545.72: # End dependencies
+1658939545.72: # These are the build dependencies
+1658939545.74: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/513.soma_t/build/build_base_aws_mpi.0000/Makefile.spec':
+1658939545.74: TUNE=base
+1658939545.74: LABEL=aws_mpi
+1658939545.74: NUMBER=513
+1658939545.74: NAME=soma_t
+1658939545.74: SOURCES= allocator.c ana.c autotuner.c bond.c cmdline.c device.c \
+1658939545.74: 	 generate_positions.c independent_sets.c init.c io.c mc.c mesh.c \
+1658939545.74: 	 monomer.c mpiroutines.c phase.c polymer.c rng.c soma.c soma_config.c \
+1658939545.74: 	 soma_util.c test.c
+1658939545.74: EXEBASE=soma
+1658939545.74: NEED_MATH=yes
+1658939545.74: USE_SPACK=
+1658939545.74: BENCHLANG=C
+
+1658939545.74: BENCH_FLAGS      = 
+1658939545.74: CC               = mpicc
+1658939545.74: CC_VERSION_OPTION = --version
+1658939545.74: COPTIMIZE        = -lm
+1658939545.74: CXX              = mpicxx
+1658939545.74: CXX_VERSION_OPTION = --version
+1658939545.74: FC               = mpifort
+1658939545.74: FC_VERSION_OPTION = --version
+1658939545.74: MPIRUN_OPTS      = --map-by ppr:64:node
+1658939545.74: OPTIMIZE         = -Ofast
+1658939545.74: OS               = unix
+1658939545.74: PMODEL           = 
+1658939545.74: absolutely_no_locking = 0
+1658939545.74: abstol           = 4e-07
+1658939545.74: action           = validate
+1658939545.74: allow_label_override = 0
+1658939545.74: backup_config    = 1
+1658939545.74: baseexe          = soma
+1658939545.74: basepeak         = 0
+1658939545.74: benchdir         = benchspec
+1658939545.74: benchmark        = 513.soma_t
+1658939545.74: binary           = 
+1658939545.74: bindir           = exe
+1658939545.74: builddir         = build
+1658939545.74: bundleaction     = 
+1658939545.74: bundlename       = 
+1658939545.74: calctol          = 1
+1658939545.74: changedhash      = 0
+1658939545.74: check_version    = 0
+1658939545.74: clean_between_builds = no
+1658939545.74: command_add_redirect = 0
+1658939545.74: commanderrfile   = speccmds.err
+1658939545.74: commandexe       = soma_base.aws_mpi
+1658939545.74: commandfile      = speccmds.cmd
+1658939545.74: commandoutfile   = speccmds.out
+1658939545.74: commandstdoutfile = speccmds.stdout
+1658939545.74: comparedir       = compare
+1658939545.74: compareerrfile   = compare.err
+1658939545.74: comparefile      = compare.cmd
+1658939545.74: compareoutfile   = compare.out
+1658939545.74: comparestdoutfile = compare.stdout
+1658939545.74: compile_error    = 0
+1658939545.74: compwhite        = 
+1658939545.74: configdir        = config
+1658939545.74: configfile       = aws_g2.cfg
+1658939545.74: configpath       = /lustre/SPEChpc/config/aws_g2.cfg
+1658939545.74: copies           = 1
+1658939545.74: current_range    = 
+1658939545.74: datadir          = data
+1658939545.74: default_size     = ref
+1658939545.74: default_submit   = $command
+1658939545.74: delay            = 0
+1658939545.74: deletebinaries   = 0
+1658939545.74: deletework       = 0
+1658939545.74: dependent_workloads = 0
+1658939545.74: device           = 
+1658939545.74: difflines        = 10
+1658939545.74: dirprot          = 511
+1658939545.74: discard_power_samples = 1
+1658939545.74: enable_monitor   = 1
+1658939545.74: endian           = 12345678
+1658939545.74: env_vars         = 0
+1658939545.74: expand_notes     = 0
+1658939545.74: expid            = 
+1658939545.74: exthash_bits     = 0
+1658939545.74: failflags        = 0
+1658939545.74: fake             = 0
+1658939545.74: feedback         = 1
+1658939545.74: flag_url_base    = https://www.spec.org/auto/hpc2021/Docs/benchmarks/flags/
+1658939545.74: floatcompare     = 
+1658939545.74: force_monitor    = 0
+1658939545.74: hostname         = graviton2-dy-c6gn16xlarge-1
+1658939545.74: http_proxy       = 
+1658939545.74: http_timeout     = 30
+1658939545.74: hw_avail         = Nov-2099
+1658939545.74: idle_current_range = 
+1658939545.74: idledelay        = 10
+1658939545.74: idleduration     = 60
+1658939545.74: ignore_errors    = 0
+1658939545.74: ignore_sigint    = 0
+1658939545.74: ignorecase       = 
+1658939545.74: info_wrap_columns = 50
+1658939545.74: inputdir         = input
+1658939545.74: inputgenerrfile  = inputgen.err
+1658939545.74: inputgenfile     = inputgen.cmd
+1658939545.74: inputgenoutfile  = inputgen.out
+1658939545.74: inputgenstdoutfile = inputgen.stdout
+1658939545.74: interconnect_fs_hw_model = BI 100 Series
+1658939545.74: interconnect_fs_hw_switch_fs_count = 1
+1658939545.74: interconnect_fs_hw_switch_fs_data_rate = 100 Gb/s
+1658939545.74: interconnect_fs_hw_switch_fs_firmware = 10.3.0.0.60
+1658939545.74: interconnect_fs_hw_switch_fs_model000 = BI 100 Series 48 Port 2
+1658939545.74: interconnect_fs_hw_switch_fs_model001 = PSU
+1658939545.74: interconnect_fs_hw_switch_fs_ports = 48
+1658939545.74: interconnect_fs_hw_topo = Mesh
+1658939545.74: interconnect_fs_hw_vendor = Big Interconnect Company
+1658939545.74: interconnect_fs_order = 0
+1658939545.74: interconnect_fs_purpose = MPI Traffic
+1658939545.74: interconnect_fs_syslbl = Big Interconnect Company
+1658939545.74: islibrary        = 0
+1658939545.74: iteration        = -1
+1658939545.74: iterations       = 2
+1658939545.74: keeptmp          = 0
+1658939545.74: label            = aws_mpi
+1658939545.74: license_num      = ?
+1658939545.74: line_width       = 0
+1658939545.74: link_input_files = 1
+1658939545.74: locking          = 1
+1658939545.74: log              = hpc2021
+1658939545.74: log_line_width   = 0
+1658939545.74: log_timestamp    = 0
+1658939545.74: logname          = /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log
+1658939545.74: lognum           = 002
+1658939545.74: mail_reports     = all
+1658939545.74: mailcompress     = 0
+1658939545.74: mailmethod       = smtp
+1658939545.74: mailport         = 25
+1658939545.74: mailserver       = 127.0.0.1
+1658939545.74: mailto           = 
+1658939545.74: make             = specmake
+1658939545.74: make_no_clobber  = 0
+1658939545.74: makefile_template = Makefile.YYYtArGeTYYYspec
+1658939545.74: makeflags        = -j 10
+1658939545.74: max_average_uncertainty = 1
+1658939545.74: max_hum_limit    = 0
+1658939545.74: max_report_runs  = 0
+1658939545.74: max_unknown_uncertainty = 1
+1658939545.74: mean_anyway      = 0
+1658939545.74: meter_connect_timeout = 30
+1658939545.74: meter_errors_default = 5
+1658939545.74: meter_errors_percentage = 5
+1658939545.74: min_report_runs  = 2
+1658939545.74: min_temp_limit   = 20
+1658939545.74: minimize_builddirs = 0
+1658939545.74: minimize_rundirs = 0
+1658939545.74: name             = soma_t
+1658939545.74: nansupport       = 
+1658939545.74: need_math        = yes
+1658939545.74: no_input_handler = close
+1658939545.74: no_monitor       = 
+1658939545.74: node_compute_count = 8
+1658939545.74: node_compute_hw_accel_connect = PCIe 3.0 16x
+1658939545.74: node_compute_hw_accel_count = 4
+1658939545.74: node_compute_hw_accel_desc = See Notes
+1658939545.74: node_compute_hw_accel_ecc = Yes
+1658939545.74: node_compute_hw_accel_model = Tesla V100-PCIE-16GB
+1658939545.74: node_compute_hw_accel_type = GPU
+1658939545.74: node_compute_hw_accel_vendor = NVIDIA Corporation
+1658939545.74: node_compute_hw_adapter_fs_count = 0
+1658939545.74: node_compute_hw_adapter_fs_data_rate = None
+1658939545.74: node_compute_hw_adapter_fs_driver = None
+1658939545.74: node_compute_hw_adapter_fs_firmware = None
+1658939545.74: node_compute_hw_adapter_fs_interconnect = None
+1658939545.74: node_compute_hw_adapter_fs_model = None
+1658939545.74: node_compute_hw_adapter_fs_ports_used = 0
+1658939545.74: node_compute_hw_adapter_fs_slot_type = None
+1658939545.74: node_compute_hw_cpu_char = Turbo up to 3.4 GHz
+1658939545.74: node_compute_hw_cpu_mhz = 2250
+1658939545.74: node_compute_hw_cpu_name = Turbo CPU
+1658939545.74: node_compute_hw_disk = 1 x 480 GB  SATA 2.5" SSD
+1658939545.74: node_compute_hw_memory = 256 GB (8 x 32 GB 2Rx8 PC4-3200AA-R)
+1658939545.74: node_compute_hw_model = Turblaster 5000
+1658939545.74: node_compute_hw_nchips = 1
+1658939545.74: node_compute_hw_ncores = 64
+1658939545.74: node_compute_hw_ncoresperchip = 64
+1658939545.74: node_compute_hw_ncpuorder = 1 chips
+1658939545.74: node_compute_hw_nthreadspercore = 1
+1658939545.74: node_compute_hw_ocache = None
+1658939545.74: node_compute_hw_other = None
+1658939545.74: node_compute_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939545.74: node_compute_hw_scache = 512 KB I+D on chip per core
+1658939545.74: node_compute_hw_tcache000 = 256 MB I+D on chip per chip
+1658939545.74: node_compute_hw_tcache001 = 16 MB shared / 4 cores
+1658939545.74: node_compute_hw_vendor = Mega Technology
+1658939545.74: node_compute_order = 1
+1658939545.74: node_compute_purpose = compute
+1658939545.74: node_compute_sw_localfile = xfs
+1658939545.74: node_compute_sw_os000 = Amazon Linux 2
+1658939545.74: node_compute_sw_os001 = Linux 5.10.112-108.499.amzn2.aarch64
+1658939545.74: node_compute_sw_other = None
+1658939545.74: node_compute_sw_sharedfile = None
+1658939545.74: node_compute_sw_state = Multi-user, run level 3
+1658939545.74: node_compute_syslbl = TurboBlaster 5000
+1658939545.74: node_fileserver_count = 1
+1658939545.74: node_fileserver_hw_adapter_fs_count = 1
+1658939545.74: node_fileserver_hw_adapter_fs_data_rate = 100 Gb/s
+1658939545.74: node_fileserver_hw_adapter_fs_driver = 10.9.1.0.15
+1658939545.74: node_fileserver_hw_adapter_fs_firmware = 10.9.0.1.0
+1658939545.74: node_fileserver_hw_adapter_fs_interconnect = BG 5000 series
+1658939545.74: node_fileserver_hw_adapter_fs_ports_used = 1
+1658939545.74: node_fileserver_hw_adapter_fs_slot_type = PCI-Express 3.0 x16
+1658939545.74: node_fileserver_hw_cpu_char = None
+1658939545.74: node_fileserver_hw_cpu_mhz = 2700
+1658939545.74: node_fileserver_hw_cpu_name = Intel Xeon Platinum 8280
+1658939545.74: node_fileserver_hw_disk = 1 x 1 TB 12 Gbps SAS 2.5" SSD (JBOD)
+1658939545.74: node_fileserver_hw_memory = 768 GB (24 x 32 GB 2Rx4 PC4-2933Y-R)
+1658939545.74: node_fileserver_hw_model = BG650
+1658939545.74: node_fileserver_hw_nchips = 2
+1658939545.74: node_fileserver_hw_ncores = 56
+1658939545.74: node_fileserver_hw_ncoresperchip = 28
+1658939545.74: node_fileserver_hw_ncpuorder = 1-2 chips
+1658939545.74: node_fileserver_hw_nthreadspercore = 1
+1658939545.74: node_fileserver_hw_ocache = None
+1658939545.74: node_fileserver_hw_other = None
+1658939545.74: node_fileserver_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939545.74: node_fileserver_hw_scache = 1 MB I+D on chip per core
+1658939545.74: node_fileserver_hw_tcache = 39424 KB I+D on chip per chip
+1658939545.74: node_fileserver_hw_vendor = Big Storage Company
+1658939545.74: node_fileserver_order = 2
+1658939545.74: node_fileserver_purpose = Fileserver
+1658939545.74: node_fileserver_sw_localfile = None
+1658939545.74: node_fileserver_sw_os = Red Hat Enterprise Linux Server release 7.6
+1658939545.74: node_fileserver_sw_other = None
+1658939545.74: node_fileserver_sw_sharedfile = NFS
+1658939545.74: node_fileserver_sw_state = Multi-User, run level 3
+1658939545.74: node_fileserver_syslbl = NFS
+1658939545.74: noratios         = 0
+1658939545.74: note_preenv      = 0
+1658939545.74: notes_wrap_columns = 0
+1658939545.74: notes_wrap_indent =   
+1658939545.74: num              = 513
+1658939545.74: obiwan           = 
+1658939545.74: oldhash          = 
+1658939545.74: os_exe_ext       = 
+1658939545.74: output_format    = all
+1658939545.74: output_root      = /home/sam/g2_spec_results/tiny/tiny_gnu_128
+1658939545.74: outputdir        = output
+1658939545.74: parallel_test    = 0
+1658939545.74: parallel_test_submit = 0
+1658939545.74: parallel_test_workloads = 
+1658939545.74: path             = /lustre/SPEChpc/benchspec/HPC/513.soma_t
+1658939545.74: plain_train      = 0
+1658939545.74: platform         = 
+1658939545.74: pmodel           = MPI
+1658939545.74: power            = 0
+1658939545.74: preenv           = 1
+1658939545.74: prefix           = 
+1658939545.74: ranks            = 128
+1658939545.74: rawhash_bits     = 256
+1658939545.74: rebuild          = 1
+1658939545.74: reftime          = reftime
+1658939545.74: reltol           = 0.006
+1658939545.74: reportable       = 0
+1658939545.74: resultdir        = result
+1658939545.74: review           = 0
+1658939545.74: run              = all
+1658939545.74: rundir           = run
+1658939545.74: runhpc           = /lustre/SPEChpc/bin/harness/runhpc --rebuild --config=aws_g2.cfg --ranks=128 --noreportable --size=test --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu_128 --iterations=2 tiny
+1658939545.74: runmode          = speed
+1658939545.74: safe_eval        = 1
+1658939545.74: save_build_files = 
+1658939545.74: section_specifier_fatal = 1
+1658939545.74: setprocgroup     = 1
+1658939545.74: setup_error      = 0
+1658939545.74: sigint           = 2
+1658939545.74: size             = test
+1658939545.74: size_class       = test
+1658939545.74: skipabstol       = 
+1658939545.74: skipobiwan       = 
+1658939545.74: skipreltol       = 
+1658939545.74: skiptol          = 
+1658939545.74: smarttune        = base
+1658939545.74: specdiff         = specdiff
+1658939545.74: specrun          = specinvoke
+1658939545.74: srcalt           = 
+1658939545.74: srcdir           = src
+1658939545.74: srcsource        = /lustre/SPEChpc/benchspec/HPC/613.soma_s/src
+1658939545.74: stagger          = 10
+1658939545.74: strict_rundir_verify = 1
+1658939545.74: submit_default   = mpirun -np $ranks ${MPIRUN_OPTS} $command
+1658939545.74: sw_avail         = Nov-2099
+1658939545.74: sw_compiler000   = C/C++/Fortran: GCC Version 9.3.0
+1658939545.74: sw_mpi_library000 = OpenMPI Version 4.1.3
+1658939545.74: sysinfo_hash_bits = 256
+1658939545.74: sysinfo_program  = 
+1658939545.74: sysinfo_program_hash = 
+1658939545.74: system_name      = Big Compute
+1658939545.74: system_vendor    = Mega Technology
+1658939545.74: table            = 1
+1658939545.74: teeout           = yes
+1658939545.74: test_date        = Jul-2022
+1658939545.74: test_sponsor     = University of Bristol
+1658939545.74: tester           = University of Bristol
+1658939545.74: threads          = 1
+1658939545.74: top              = /lustre/SPEChpc
+1658939545.74: train_single_thread = 0
+1658939545.74: train_with       = train
+1658939545.74: tune             = base
+1658939545.74: uid              = 1443601145
+1658939545.74: unbuffer         = 1
+1658939545.74: uncertainty_exception = 5
+1658939545.74: update           = 0
+1658939545.74: update_url       = http://www.spec.org/auto/hpc2021/updates/
+1658939545.74: use_spack        = 
+1658939545.74: use_submit_for_compare = 0
+1658939545.74: use_submit_for_speed = 1
+1658939545.74: username         = sam
+1658939545.74: verbose          = 5
+1658939545.74: verify_binaries  = 1
+1658939545.74: version          = 1.000003
+1658939545.74: version_url      = http://www.spec.org/auto/hpc2021/devel_version
+1658939545.74: voltage_range    = 
+1658939545.74: worklist         = list
+1658939545.74: OUTPUT_RMFILES   = stateR42time10Npoly32000.txt
+1658939545.74:   Compile for '513.soma_t' started at: 2022-07-27 16:32:25 (1658939545)
+1658939545.76: Issuing make.clean command 'specmake --output-sync -j 10 clean'
+1658939545.76: specmake --output-sync -j 10 clean
+1658939545.76: Start make.clean command: 2022-07-27 16:32:25 (1658939545.75634)
+1658939545.86: rm -rf *.o  stateR42time10Npoly32000.txt
+1658939545.86: find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+1658939545.86: rm -rf soma
+1658939545.86: rm -rf soma.exe
+1658939545.86: rm -rf core
+1658939545.96: Stop make.clean command: 2022-07-27 16:32:25 (1658939545.95785)
+1658939545.96: Elapsed time for make.clean command: 00:00:00 (0.201516151428223)
+1658939545.97: Issuing make command 'specmake --output-sync -j 10 build'
+1658939545.97: specmake --output-sync -j 10 build
+1658939545.97: Start make command: 2022-07-27 16:32:25 (1658939545.96845)
+1658939546.07: mpicc -c -o bond.o -DSPEC -DNDEBUG   -Ofast -lm                 bond.c
+1658939546.07: mpicc -c -o device.o -DSPEC -DNDEBUG   -Ofast -lm                 device.c
+1658939546.07: mpicc -c -o allocator.o -DSPEC -DNDEBUG   -Ofast -lm                 allocator.c
+1658939546.07: mpicc -c -o autotuner.o -DSPEC -DNDEBUG   -Ofast -lm                 autotuner.c
+1658939546.07: mpicc -c -o init.o -DSPEC -DNDEBUG   -Ofast -lm                 init.c
+1658939546.17: mpicc -c -o monomer.o -DSPEC -DNDEBUG   -Ofast -lm                 monomer.c
+1658939546.17: mpicc -c -o generate_positions.o -DSPEC -DNDEBUG   -Ofast -lm                 generate_positions.c
+1658939546.18: mpicc -c -o independent_sets.o -DSPEC -DNDEBUG   -Ofast -lm                 independent_sets.c
+1658939546.28: mpicc -c -o mpiroutines.o -DSPEC -DNDEBUG   -Ofast -lm                 mpiroutines.c
+1658939546.28: mpicc -c -o io.o -DSPEC -DNDEBUG   -Ofast -lm                 io.c
+1658939546.28: mpicc -c -o ana.o -DSPEC -DNDEBUG   -Ofast -lm                 ana.c
+1658939546.28: mpicc -c -o soma_config.o -DSPEC -DNDEBUG   -Ofast -lm                 soma_config.c
+1658939546.28: mpicc -c -o polymer.o -DSPEC -DNDEBUG   -Ofast -lm                 polymer.c
+1658939546.28: mpicc -c -o cmdline.o -DSPEC -DNDEBUG   -Ofast -lm                 cmdline.c
+1658939546.28: mpicc -c -o phase.o -DSPEC -DNDEBUG   -Ofast -lm                 phase.c
+1658939546.28: mpicc -c -o mesh.o -DSPEC -DNDEBUG   -Ofast -lm                 mesh.c
+1658939546.38: mpicc -c -o soma.o -DSPEC -DNDEBUG   -Ofast -lm                 soma.c
+1658939546.38: mpicc -c -o soma_util.o -DSPEC -DNDEBUG   -Ofast -lm                 soma_util.c
+1658939546.38: mpicc -c -o mc.o -DSPEC -DNDEBUG   -Ofast -lm                 mc.c
+1658939546.38: mpicc -c -o test.o -DSPEC -DNDEBUG   -Ofast -lm                 test.c
+1658939547.38: mpicc -c -o rng.o -DSPEC -DNDEBUG   -Ofast -lm                 rng.c
+1658939547.48: mpicc      -Ofast -lm         allocator.o ana.o autotuner.o bond.o cmdline.o device.o generate_positions.o independent_sets.o init.o io.o mc.o mesh.o monomer.o mpiroutines.o phase.o polymer.o rng.o soma.o soma_config.o soma_util.o test.o             -lm         -o soma  
+1658939547.56: Stop make command: 2022-07-27 16:32:27 (1658939547.56149)
+1658939547.56: Elapsed time for make command: 00:00:01 (1.59304308891296)
+1658939547.56: Issuing options command 'specmake --output-sync -j 10 options'
+1658939547.56: specmake --output-sync -j 10 options
+1658939547.56: Start options command: 2022-07-27 16:32:27 (1658939547.56284)
+
+1658939547.67: COMP: "mpicc -c -o options.o -DSPEC -DNDEBUG   -Ofast -lm                 <source>"
+1658939547.67: C: CC="mpicc"
+1658939547.67: C: COBJOPT="-c -o options"
+1658939547.67: P: CPUFLAGS="-DSPEC -DNDEBUG"
+1658939547.67: P: BENCH_FLAGS=""
+1658939547.67: P: BENCH_CFLAGS=""
+1658939547.67: O: OPTIMIZE="-Ofast"
+1658939547.67: O: COPTIMIZE="-lm"
+1658939547.67: P: PORTABILITY=""
+1658939547.67: P: CPORTABILITY=""
+1658939547.67: O: EXTRA_CFLAGS=""
+1658939547.67: O: EXTRA_OPTIMIZE=""
+1658939547.67: O: EXTRA_COPTIMIZE=""
+1658939547.67: P: EXTRA_PORTABILITY=""
+1658939547.67: P: EXTRA_CPORTABILITY=""
+1658939547.67: LINK: "mpicc      -Ofast -lm         <objects>   -lm         -o options  "
+1658939547.67: C: LD="mpicc"
+1658939547.67: O: OPTIMIZE="-Ofast"
+1658939547.67: O: COPTIMIZE="-lm"
+1658939547.67: C: MATH_LIBS="-lm"
+1658939547.67: C: LDOUT="-o options"
+1658939547.78: Stop options command: 2022-07-27 16:32:27 (1658939547.77814)
+1658939547.78: Elapsed time for options command: 00:00:00 (0.215293169021606)
+1658939547.78: Issuing compiler-version command 'specmake --output-sync -j 10 compiler-version'
+1658939547.78: specmake --output-sync -j 10 compiler-version
+1658939547.78: Start compiler-version command: 2022-07-27 16:32:27 (1658939547.77987)
+
+1658939547.88:  CC_VERSION_OPTION:
+
+1658939547.88: gcc (Spack GCC) 9.3.0
+1658939547.88: Copyright (C) 2019 Free Software Foundation, Inc.
+1658939547.88: This is free software; see the source for copying conditions.  There is NO
+1658939547.88: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1658939547.97: Stop compiler-version command: 2022-07-27 16:32:27 (1658939547.9719)
+1658939547.97: Elapsed time for compiler-version command: 00:00:00 (0.192027807235718)
+1658939547.97:   Compile for '513.soma_t' ended at: 2022-07-27 16:32:27 (1658939547)
+1658939547.97:   Elapsed compile for '513.soma_t': 00:00:02 (2)
+1658939547.98: Comparing SHA-512 hashes:
+1658939547.98:   e1d69b4661cfc8bfa4076d24109612d60299b3635ae6158e35a8de8b1b334a12e291bb7e001a56e11f1f745ae5d97da2288e2a7e3894e497989d52966c12bdc4 soma
+1658939547.98:   e1d69b4661cfc8bfa4076d24109612d60299b3635ae6158e35a8de8b1b334a12e291bb7e001a56e11f1f745ae5d97da2288e2a7e3894e497989d52966c12bdc4 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/513.soma_t/exe/soma_base.aws_mpi
+
+1658939548.13: COMP: "mpicc -c -o options.o -DSPEC -DNDEBUG   -Ofast -lm                 <source>"
+1658939548.13: C: CC="mpicc"
+1658939548.13: C: COBJOPT="-c -o options"
+1658939548.13: P: CPUFLAGS="-DSPEC -DNDEBUG"
+1658939548.13: P: BENCH_FLAGS=""
+1658939548.13: P: BENCH_CFLAGS=""
+1658939548.13: O: OPTIMIZE="-Ofast"
+1658939548.13: O: COPTIMIZE="-lm"
+1658939548.13: P: PORTABILITY=""
+1658939548.13: P: CPORTABILITY=""
+1658939548.13: O: EXTRA_CFLAGS=""
+1658939548.13: O: EXTRA_OPTIMIZE=""
+1658939548.13: O: EXTRA_COPTIMIZE=""
+1658939548.13: P: EXTRA_PORTABILITY=""
+1658939548.13: P: EXTRA_CPORTABILITY=""
+1658939548.13: LINK: "mpicc      -Ofast -lm         <objects>   -lm         -o options  "
+1658939548.13: C: LD="mpicc"
+1658939548.13: O: OPTIMIZE="-Ofast"
+1658939548.13: O: COPTIMIZE="-lm"
+1658939548.13: C: MATH_LIBS="-lm"
+1658939548.13: C: LDOUT="-o options"
+
+1658939548.34:  CC_VERSION_OPTION:
+
+1658939548.34: gcc (Spack GCC) 9.3.0
+1658939548.34: Copyright (C) 2019 Free Software Foundation, Inc.
+1658939548.34: This is free software; see the source for copying conditions.  There is NO
+1658939548.34: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1658939548.44: update_config_exehash(Spec::Config=HASH(0x3669dd40), aws_mpi) called
+1658939548.44: Found new hash signature for 513.soma_t=base=aws_mpi
+1658939548.44: Updating config file /lustre/SPEChpc/config/aws_g2.cfg
+1658939548.44: /lustre/SPEChpc/config/aws_g2.cfg will be saved as /lustre/SPEChpc/config/aws_g2.cfg.2022-07-27T163228
+
+1658939548.45: ------------------------------------------------------------------------
+1658939548.46:   Building 518.tealeaf_t base aws_mpi: (build_base_aws_mpi.0000) [2022-07-27 16:32:28]
+1658939548.55:    Using existing directory at '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/518.tealeaf_t/build/build_base_aws_mpi.0000' for 518.tealeaf_t base aws_mpi build
+1658939549.14: Comparing SHA-512 hashes:
+1658939549.14:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /lustre/SPEChpc/benchspec/HPC/618.tealeaf_s/src/Makefile
+1658939549.14:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/518.tealeaf_t/build/build_base_aws_mpi.0000/Makefile
+1658939549.15: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/518.tealeaf_t/build/build_base_aws_mpi.0000/Makefile.deps':
+
+
+1658939549.15: # End dependencies
+1658939549.15: # These are the build dependencies
+1658939549.15: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/518.tealeaf_t/build/build_base_aws_mpi.0000/Makefile.spec':
+1658939549.15: TUNE=base
+1658939549.15: LABEL=aws_mpi
+1658939549.15: NUMBER=518
+1658939549.15: NAME=tealeaf_t
+1658939549.15: SOURCES= 2d/chunk.c 2d/comms.c 2d/diffuse.c 2d/initialise.c 2d/main.c \
+1658939549.15: 	 2d/parse_config.c 2d/profiler.c 2d/settings.c 2d/shared.c \
+1658939549.15: 	 2d/drivers/cg_driver.c 2d/drivers/cheby_driver.c \
+1658939549.15: 	 2d/drivers/eigenvalue_driver.c 2d/drivers/field_summary_driver.c \
+1658939549.15: 	 2d/drivers/halo_update_driver.c 2d/drivers/jacobi_driver.c \
+1658939549.15: 	 2d/drivers/kernel_initialise_driver.c 2d/drivers/ppcg_driver.c \
+1658939549.15: 	 2d/drivers/remote_halo_driver.c 2d/drivers/set_chunk_data_driver.c \
+1658939549.15: 	 2d/drivers/set_chunk_state_driver.c 2d/drivers/solve_finished_driver.c \
+1658939549.15: 	 2d/drivers/store_energy_driver.c 2d/c_kernels/cg.c 2d/c_kernels/cheby.c \
+1658939549.15: 	 2d/c_kernels/field_summary.c 2d/c_kernels/jacobi.c \
+1658939549.15: 	 2d/c_kernels/kernel_initialise.c 2d/c_kernels/kernel_interface.c \
+1658939549.15: 	 2d/c_kernels/local_halos.c 2d/c_kernels/pack_halos.c 2d/c_kernels/ppcg.c \
+1658939549.15: 	 2d/c_kernels/set_chunk_data.c 2d/c_kernels/set_chunk_state.c \
+1658939549.15: 	 2d/c_kernels/solver_methods.c 2d/c_kernels/store_energy.c \
+1658939549.15: 	 2d/c_kernels/diffuse_overload.c
+1658939549.15: EXEBASE=tealeaf
+1658939549.15: NEED_MATH=
+1658939549.15: USE_SPACK=
+1658939549.15: BENCHLANG=C
+
+1658939549.15: BENCH_CFLAGS     = -I2d/drivers/ -I2d/c_kernels
+1658939549.15: CC               = mpicc
+1658939549.15: CC_VERSION_OPTION = --version
+1658939549.15: COPTIMIZE        = -lm
+1658939549.15: CXX              = mpicxx
+1658939549.15: CXX_VERSION_OPTION = --version
+1658939549.15: FC               = mpifort
+1658939549.15: FC_VERSION_OPTION = --version
+1658939549.15: MPIRUN_OPTS      = --map-by ppr:64:node
+1658939549.15: OPTIMIZE         = -Ofast
+1658939549.15: OS               = unix
+1658939549.15: PMODEL           = 
+1658939549.15: absolutely_no_locking = 0
+1658939549.15: abstol           = 4e-07
+1658939549.15: action           = validate
+1658939549.15: allow_label_override = 0
+1658939549.15: backup_config    = 1
+1658939549.15: baseexe          = tealeaf
+1658939549.15: basepeak         = 0
+1658939549.15: benchdir         = benchspec
+1658939549.15: benchmark        = 518.tealeaf_t
+1658939549.15: binary           = 
+1658939549.15: bindir           = exe
+1658939549.15: builddir         = build
+1658939549.15: bundleaction     = 
+1658939549.15: bundlename       = 
+1658939549.15: calctol          = 1
+1658939549.15: changedhash      = 0
+1658939549.15: check_version    = 0
+1658939549.15: clean_between_builds = no
+1658939549.15: command_add_redirect = 0
+1658939549.15: commanderrfile   = speccmds.err
+1658939549.15: commandexe       = tealeaf_base.aws_mpi
+1658939549.15: commandfile      = speccmds.cmd
+1658939549.15: commandoutfile   = speccmds.out
+1658939549.15: commandstdoutfile = speccmds.stdout
+1658939549.15: comparedir       = compare
+1658939549.15: compareerrfile   = compare.err
+1658939549.15: comparefile      = compare.cmd
+1658939549.15: compareoutfile   = compare.out
+1658939549.15: comparestdoutfile = compare.stdout
+1658939549.15: compile_error    = 0
+1658939549.15: compwhite        = 
+1658939549.15: configdir        = config
+1658939549.15: configfile       = aws_g2.cfg
+1658939549.15: configpath       = /lustre/SPEChpc/config/aws_g2.cfg
+1658939549.15: copies           = 1
+1658939549.15: current_range    = 
+1658939549.15: datadir          = data
+1658939549.15: default_size     = ref
+1658939549.15: default_submit   = $command
+1658939549.15: delay            = 0
+1658939549.15: deletebinaries   = 0
+1658939549.15: deletework       = 0
+1658939549.15: dependent_workloads = 0
+1658939549.15: device           = 
+1658939549.15: difflines        = 10
+1658939549.15: dirprot          = 511
+1658939549.15: discard_power_samples = 1
+1658939549.15: enable_monitor   = 1
+1658939549.15: endian           = 12345678
+1658939549.15: env_vars         = 0
+1658939549.15: expand_notes     = 0
+1658939549.15: expid            = 
+1658939549.15: exthash_bits     = 0
+1658939549.15: failflags        = 0
+1658939549.15: fake             = 0
+1658939549.15: feedback         = 1
+1658939549.15: flag_url_base    = https://www.spec.org/auto/hpc2021/Docs/benchmarks/flags/
+1658939549.15: floatcompare     = 
+1658939549.15: force_monitor    = 0
+1658939549.15: hostname         = graviton2-dy-c6gn16xlarge-1
+1658939549.15: http_proxy       = 
+1658939549.15: http_timeout     = 30
+1658939549.15: hw_avail         = Nov-2099
+1658939549.15: idle_current_range = 
+1658939549.15: idledelay        = 10
+1658939549.15: idleduration     = 60
+1658939549.15: ignore_errors    = 0
+1658939549.15: ignore_sigint    = 0
+1658939549.15: ignorecase       = 
+1658939549.15: info_wrap_columns = 50
+1658939549.15: inputdir         = input
+1658939549.15: inputgenerrfile  = inputgen.err
+1658939549.15: inputgenfile     = inputgen.cmd
+1658939549.15: inputgenoutfile  = inputgen.out
+1658939549.15: inputgenstdoutfile = inputgen.stdout
+1658939549.15: interconnect_fs_hw_model = BI 100 Series
+1658939549.15: interconnect_fs_hw_switch_fs_count = 1
+1658939549.15: interconnect_fs_hw_switch_fs_data_rate = 100 Gb/s
+1658939549.15: interconnect_fs_hw_switch_fs_firmware = 10.3.0.0.60
+1658939549.15: interconnect_fs_hw_switch_fs_model000 = BI 100 Series 48 Port 2
+1658939549.15: interconnect_fs_hw_switch_fs_model001 = PSU
+1658939549.15: interconnect_fs_hw_switch_fs_ports = 48
+1658939549.15: interconnect_fs_hw_topo = Mesh
+1658939549.15: interconnect_fs_hw_vendor = Big Interconnect Company
+1658939549.15: interconnect_fs_order = 0
+1658939549.15: interconnect_fs_purpose = MPI Traffic
+1658939549.15: interconnect_fs_syslbl = Big Interconnect Company
+1658939549.15: islibrary        = 0
+1658939549.15: iteration        = -1
+1658939549.15: iterations       = 2
+1658939549.15: keeptmp          = 0
+1658939549.15: label            = aws_mpi
+1658939549.15: license_num      = ?
+1658939549.15: line_width       = 0
+1658939549.15: link_input_files = 1
+1658939549.15: locking          = 1
+1658939549.15: log              = hpc2021
+1658939549.15: log_line_width   = 0
+1658939549.15: log_timestamp    = 0
+1658939549.15: logname          = /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log
+1658939549.15: lognum           = 002
+1658939549.15: mail_reports     = all
+1658939549.15: mailcompress     = 0
+1658939549.15: mailmethod       = smtp
+1658939549.15: mailport         = 25
+1658939549.15: mailserver       = 127.0.0.1
+1658939549.15: mailto           = 
+1658939549.15: make             = specmake
+1658939549.15: make_no_clobber  = 0
+1658939549.15: makefile_template = Makefile.YYYtArGeTYYYspec
+1658939549.15: makeflags        = -j 10
+1658939549.15: max_average_uncertainty = 1
+1658939549.15: max_hum_limit    = 0
+1658939549.15: max_report_runs  = 0
+1658939549.15: max_unknown_uncertainty = 1
+1658939549.15: mean_anyway      = 0
+1658939549.15: meter_connect_timeout = 30
+1658939549.15: meter_errors_default = 5
+1658939549.15: meter_errors_percentage = 5
+1658939549.15: min_report_runs  = 2
+1658939549.15: min_temp_limit   = 20
+1658939549.15: minimize_builddirs = 0
+1658939549.15: minimize_rundirs = 0
+1658939549.15: name             = tealeaf_t
+1658939549.15: nansupport       = 
+1658939549.15: need_math        = 
+1658939549.15: no_input_handler = close
+1658939549.15: no_monitor       = 
+1658939549.15: node_compute_count = 8
+1658939549.15: node_compute_hw_accel_connect = PCIe 3.0 16x
+1658939549.15: node_compute_hw_accel_count = 4
+1658939549.15: node_compute_hw_accel_desc = See Notes
+1658939549.15: node_compute_hw_accel_ecc = Yes
+1658939549.15: node_compute_hw_accel_model = Tesla V100-PCIE-16GB
+1658939549.15: node_compute_hw_accel_type = GPU
+1658939549.15: node_compute_hw_accel_vendor = NVIDIA Corporation
+1658939549.15: node_compute_hw_adapter_fs_count = 0
+1658939549.15: node_compute_hw_adapter_fs_data_rate = None
+1658939549.15: node_compute_hw_adapter_fs_driver = None
+1658939549.15: node_compute_hw_adapter_fs_firmware = None
+1658939549.15: node_compute_hw_adapter_fs_interconnect = None
+1658939549.15: node_compute_hw_adapter_fs_model = None
+1658939549.15: node_compute_hw_adapter_fs_ports_used = 0
+1658939549.15: node_compute_hw_adapter_fs_slot_type = None
+1658939549.15: node_compute_hw_cpu_char = Turbo up to 3.4 GHz
+1658939549.15: node_compute_hw_cpu_mhz = 2250
+1658939549.15: node_compute_hw_cpu_name = Turbo CPU
+1658939549.15: node_compute_hw_disk = 1 x 480 GB  SATA 2.5" SSD
+1658939549.15: node_compute_hw_memory = 256 GB (8 x 32 GB 2Rx8 PC4-3200AA-R)
+1658939549.15: node_compute_hw_model = Turblaster 5000
+1658939549.15: node_compute_hw_nchips = 1
+1658939549.15: node_compute_hw_ncores = 64
+1658939549.15: node_compute_hw_ncoresperchip = 64
+1658939549.15: node_compute_hw_ncpuorder = 1 chips
+1658939549.15: node_compute_hw_nthreadspercore = 1
+1658939549.15: node_compute_hw_ocache = None
+1658939549.15: node_compute_hw_other = None
+1658939549.15: node_compute_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939549.15: node_compute_hw_scache = 512 KB I+D on chip per core
+1658939549.15: node_compute_hw_tcache000 = 256 MB I+D on chip per chip
+1658939549.15: node_compute_hw_tcache001 = 16 MB shared / 4 cores
+1658939549.15: node_compute_hw_vendor = Mega Technology
+1658939549.15: node_compute_order = 1
+1658939549.15: node_compute_purpose = compute
+1658939549.15: node_compute_sw_localfile = xfs
+1658939549.15: node_compute_sw_os000 = Amazon Linux 2
+1658939549.15: node_compute_sw_os001 = Linux 5.10.112-108.499.amzn2.aarch64
+1658939549.15: node_compute_sw_other = None
+1658939549.15: node_compute_sw_sharedfile = None
+1658939549.15: node_compute_sw_state = Multi-user, run level 3
+1658939549.15: node_compute_syslbl = TurboBlaster 5000
+1658939549.15: node_fileserver_count = 1
+1658939549.15: node_fileserver_hw_adapter_fs_count = 1
+1658939549.15: node_fileserver_hw_adapter_fs_data_rate = 100 Gb/s
+1658939549.15: node_fileserver_hw_adapter_fs_driver = 10.9.1.0.15
+1658939549.15: node_fileserver_hw_adapter_fs_firmware = 10.9.0.1.0
+1658939549.15: node_fileserver_hw_adapter_fs_interconnect = BG 5000 series
+1658939549.15: node_fileserver_hw_adapter_fs_ports_used = 1
+1658939549.15: node_fileserver_hw_adapter_fs_slot_type = PCI-Express 3.0 x16
+1658939549.15: node_fileserver_hw_cpu_char = None
+1658939549.15: node_fileserver_hw_cpu_mhz = 2700
+1658939549.15: node_fileserver_hw_cpu_name = Intel Xeon Platinum 8280
+1658939549.15: node_fileserver_hw_disk = 1 x 1 TB 12 Gbps SAS 2.5" SSD (JBOD)
+1658939549.15: node_fileserver_hw_memory = 768 GB (24 x 32 GB 2Rx4 PC4-2933Y-R)
+1658939549.15: node_fileserver_hw_model = BG650
+1658939549.15: node_fileserver_hw_nchips = 2
+1658939549.15: node_fileserver_hw_ncores = 56
+1658939549.15: node_fileserver_hw_ncoresperchip = 28
+1658939549.15: node_fileserver_hw_ncpuorder = 1-2 chips
+1658939549.15: node_fileserver_hw_nthreadspercore = 1
+1658939549.15: node_fileserver_hw_ocache = None
+1658939549.15: node_fileserver_hw_other = None
+1658939549.15: node_fileserver_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939549.15: node_fileserver_hw_scache = 1 MB I+D on chip per core
+1658939549.15: node_fileserver_hw_tcache = 39424 KB I+D on chip per chip
+1658939549.15: node_fileserver_hw_vendor = Big Storage Company
+1658939549.15: node_fileserver_order = 2
+1658939549.15: node_fileserver_purpose = Fileserver
+1658939549.15: node_fileserver_sw_localfile = None
+1658939549.15: node_fileserver_sw_os = Red Hat Enterprise Linux Server release 7.6
+1658939549.15: node_fileserver_sw_other = None
+1658939549.15: node_fileserver_sw_sharedfile = NFS
+1658939549.15: node_fileserver_sw_state = Multi-User, run level 3
+1658939549.15: node_fileserver_syslbl = NFS
+1658939549.15: noratios         = 0
+1658939549.15: note_preenv      = 0
+1658939549.15: notes_wrap_columns = 0
+1658939549.15: notes_wrap_indent =   
+1658939549.15: num              = 518
+1658939549.15: obiwan           = 
+1658939549.15: oldhash          = 
+1658939549.15: os_exe_ext       = 
+1658939549.15: output_format    = all
+1658939549.15: output_root      = /home/sam/g2_spec_results/tiny/tiny_gnu_128
+1658939549.15: outputdir        = output
+1658939549.15: parallel_test    = 0
+1658939549.15: parallel_test_submit = 0
+1658939549.15: parallel_test_workloads = 
+1658939549.15: path             = /lustre/SPEChpc/benchspec/HPC/518.tealeaf_t
+1658939549.15: plain_train      = 0
+1658939549.15: platform         = 
+1658939549.15: pmodel           = MPI
+1658939549.15: power            = 0
+1658939549.15: preenv           = 1
+1658939549.15: prefix           = 
+1658939549.15: ranks            = 128
+1658939549.15: rawhash_bits     = 256
+1658939549.15: rebuild          = 1
+1658939549.15: reftime          = reftime
+1658939549.15: reltol           = 0.006
+1658939549.15: reportable       = 0
+1658939549.15: resultdir        = result
+1658939549.15: review           = 0
+1658939549.15: run              = all
+1658939549.15: rundir           = run
+1658939549.15: runhpc           = /lustre/SPEChpc/bin/harness/runhpc --rebuild --config=aws_g2.cfg --ranks=128 --noreportable --size=test --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu_128 --iterations=2 tiny
+1658939549.15: runmode          = speed
+1658939549.15: safe_eval        = 1
+1658939549.15: save_build_files = 
+1658939549.15: section_specifier_fatal = 1
+1658939549.15: setprocgroup     = 1
+1658939549.15: setup_error      = 0
+1658939549.15: sigint           = 2
+1658939549.15: size             = test
+1658939549.15: size_class       = test
+1658939549.15: skipabstol       = 
+1658939549.15: skipobiwan       = 
+1658939549.15: skipreltol       = 
+1658939549.15: skiptol          = 
+1658939549.15: smarttune        = base
+1658939549.15: specdiff         = specdiff
+1658939549.15: specrun          = specinvoke
+1658939549.15: srcalt           = 
+1658939549.15: srcdir           = src
+1658939549.15: srcsource        = /lustre/SPEChpc/benchspec/HPC/618.tealeaf_s/src
+1658939549.15: stagger          = 10
+1658939549.15: strict_rundir_verify = 1
+1658939549.15: submit_default   = mpirun -np $ranks ${MPIRUN_OPTS} $command
+1658939549.15: sw_avail         = Nov-2099
+1658939549.15: sw_compiler000   = C/C++/Fortran: GCC Version 9.3.0
+1658939549.15: sw_mpi_library000 = OpenMPI Version 4.1.3
+1658939549.15: sysinfo_hash_bits = 256
+1658939549.15: sysinfo_program  = 
+1658939549.15: sysinfo_program_hash = 
+1658939549.15: system_name      = Big Compute
+1658939549.15: system_vendor    = Mega Technology
+1658939549.15: table            = 1
+1658939549.15: teeout           = yes
+1658939549.15: test_date        = Jul-2022
+1658939549.15: test_sponsor     = University of Bristol
+1658939549.15: tester           = University of Bristol
+1658939549.15: threads          = 1
+1658939549.15: top              = /lustre/SPEChpc
+1658939549.15: train_single_thread = 0
+1658939549.15: train_with       = train
+1658939549.15: tune             = base
+1658939549.15: uid              = 1443601145
+1658939549.15: unbuffer         = 1
+1658939549.15: uncertainty_exception = 5
+1658939549.15: update           = 0
+1658939549.15: update_url       = http://www.spec.org/auto/hpc2021/updates/
+1658939549.15: use_spack        = 
+1658939549.15: use_submit_for_compare = 0
+1658939549.15: use_submit_for_speed = 1
+1658939549.15: username         = sam
+1658939549.15: verbose          = 5
+1658939549.15: verify_binaries  = 1
+1658939549.15: version          = 1.000003
+1658939549.15: version_url      = http://www.spec.org/auto/hpc2021/devel_version
+1658939549.15: voltage_range    = 
+1658939549.15: worklist         = list
+1658939549.15: OUTPUT_RMFILES   = tea.out
+1658939549.16:   Compile for '518.tealeaf_t' started at: 2022-07-27 16:32:29 (1658939549)
+1658939549.17: Issuing make.clean command 'specmake --output-sync -j 10 clean'
+1658939549.17: specmake --output-sync -j 10 clean
+1658939549.17: Start make.clean command: 2022-07-27 16:32:29 (1658939549.16968)
+1658939549.27: rm -rf *.o  tea.out
+1658939549.27: find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+1658939549.27: rm -rf tealeaf
+1658939549.27: rm -rf tealeaf.exe
+1658939549.27: rm -rf core
+1658939549.37: Stop make.clean command: 2022-07-27 16:32:29 (1658939549.36494)
+1658939549.37: Elapsed time for make.clean command: 00:00:00 (0.195255994796753)
+1658939549.38: Issuing make command 'specmake --output-sync -j 10 build'
+1658939549.38: specmake --output-sync -j 10 build
+1658939549.38: Start make command: 2022-07-27 16:32:29 (1658939549.3756)
+1658939549.48: mpicc -c -o 2d/profiler.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/profiler.c
+1658939549.48: mpicc -c -o 2d/settings.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/settings.c
+1658939549.48: mpicc -c -o 2d/chunk.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/chunk.c
+1658939549.48: mpicc -c -o 2d/comms.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/comms.c
+1658939549.48: mpicc -c -o 2d/diffuse.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/diffuse.c
+1658939549.58: mpicc -c -o 2d/initialise.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/initialise.c
+1658939549.58: mpicc -c -o 2d/main.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/main.c
+1658939549.58: mpicc -c -o 2d/drivers/cg_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/cg_driver.c
+1658939549.58: mpicc -c -o 2d/shared.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/shared.c
+1658939549.58: mpicc -c -o 2d/drivers/halo_update_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/halo_update_driver.c
+1658939549.58: mpicc -c -o 2d/drivers/field_summary_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/field_summary_driver.c
+1658939549.58: mpicc -c -o 2d/drivers/cheby_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/cheby_driver.c
+1658939549.58: mpicc -c -o 2d/drivers/kernel_initialise_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/kernel_initialise_driver.c
+1658939549.58: mpicc -c -o 2d/drivers/set_chunk_data_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/set_chunk_data_driver.c
+1658939549.58: mpicc -c -o 2d/drivers/jacobi_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/jacobi_driver.c
+1658939549.58: mpicc -c -o 2d/drivers/eigenvalue_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/eigenvalue_driver.c
+1658939549.68: mpicc -c -o 2d/drivers/set_chunk_state_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/set_chunk_state_driver.c
+1658939549.68: mpicc -c -o 2d/drivers/ppcg_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/ppcg_driver.c
+1658939549.68: mpicc -c -o 2d/drivers/store_energy_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/store_energy_driver.c
+1658939549.68: mpicc -c -o 2d/drivers/solve_finished_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/solve_finished_driver.c
+1658939549.68: mpicc -c -o 2d/parse_config.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/parse_config.c
+1658939549.68: mpicc -c -o 2d/c_kernels/field_summary.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/field_summary.c
+1658939549.68: mpicc -c -o 2d/c_kernels/cheby.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/cheby.c
+1658939549.78: mpicc -c -o 2d/drivers/remote_halo_driver.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/drivers/remote_halo_driver.c
+1658939549.78: mpicc -c -o 2d/c_kernels/kernel_interface.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/kernel_interface.c
+1658939549.78: mpicc -c -o 2d/c_kernels/ppcg.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/ppcg.c
+1658939549.78: mpicc -c -o 2d/c_kernels/set_chunk_data.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/set_chunk_data.c
+1658939549.78: mpicc -c -o 2d/c_kernels/jacobi.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/jacobi.c
+1658939549.78: mpicc -c -o 2d/c_kernels/cg.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/cg.c
+1658939549.78: mpicc -c -o 2d/c_kernels/store_energy.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/store_energy.c
+1658939549.78: mpicc -c -o 2d/c_kernels/local_halos.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/local_halos.c
+1658939549.78: mpicc -c -o 2d/c_kernels/pack_halos.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/pack_halos.c
+1658939549.78: mpicc -c -o 2d/c_kernels/set_chunk_state.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/set_chunk_state.c
+1658939549.78: mpicc -c -o 2d/c_kernels/diffuse_overload.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/diffuse_overload.c
+1658939549.88: mpicc -c -o 2d/c_kernels/solver_methods.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/solver_methods.c
+1658939549.88: mpicc -c -o 2d/c_kernels/kernel_initialise.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 2d/c_kernels/kernel_initialise.c
+1658939549.88: mpicc      -Ofast -lm         2d/chunk.o 2d/comms.o 2d/diffuse.o 2d/initialise.o 2d/main.o 2d/parse_config.o 2d/profiler.o 2d/settings.o 2d/shared.o 2d/drivers/cg_driver.o 2d/drivers/cheby_driver.o 2d/drivers/eigenvalue_driver.o 2d/drivers/field_summary_driver.o 2d/drivers/halo_update_driver.o 2d/drivers/jacobi_driver.o 2d/drivers/kernel_initialise_driver.o 2d/drivers/ppcg_driver.o 2d/drivers/remote_halo_driver.o 2d/drivers/set_chunk_data_driver.o 2d/drivers/set_chunk_state_driver.o 2d/drivers/solve_finished_driver.o 2d/drivers/store_energy_driver.o 2d/c_kernels/cg.o 2d/c_kernels/cheby.o 2d/c_kernels/field_summary.o 2d/c_kernels/jacobi.o 2d/c_kernels/kernel_initialise.o 2d/c_kernels/kernel_interface.o 2d/c_kernels/local_halos.o 2d/c_kernels/pack_halos.o 2d/c_kernels/ppcg.o 2d/c_kernels/set_chunk_data.o 2d/c_kernels/set_chunk_state.o 2d/c_kernels/solver_methods.o 2d/c_kernels/store_energy.o 2d/c_kernels/diffuse_overload.o                      -o tealeaf  
+1658939550.03: Stop make command: 2022-07-27 16:32:30 (1658939550.03343)
+1658939550.03: Elapsed time for make command: 00:00:00 (0.657828092575073)
+1658939550.03: Issuing options command 'specmake --output-sync -j 10 options'
+1658939550.03: specmake --output-sync -j 10 options
+1658939550.03: Start options command: 2022-07-27 16:32:30 (1658939550.03481)
+
+1658939550.14: COMP: "mpicc -c -o options.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 <source>"
+1658939550.14: C: CC="mpicc"
+1658939550.14: C: COBJOPT="-c -o options"
+1658939550.14: P: CPUFLAGS="-DSPEC -DNDEBUG"
+1658939550.14: P: BENCH_FLAGS=""
+1658939550.14: P: BENCH_CFLAGS="-I2d/drivers/ -I2d/c_kernels"
+1658939550.14: O: OPTIMIZE="-Ofast"
+1658939550.14: O: COPTIMIZE="-lm"
+1658939550.14: P: PORTABILITY=""
+1658939550.14: P: CPORTABILITY=""
+1658939550.14: O: EXTRA_CFLAGS=""
+1658939550.14: O: EXTRA_OPTIMIZE=""
+1658939550.14: O: EXTRA_COPTIMIZE=""
+1658939550.14: P: EXTRA_PORTABILITY=""
+1658939550.14: P: EXTRA_CPORTABILITY=""
+1658939550.14: LINK: "mpicc      -Ofast -lm         <objects>            -o options  "
+1658939550.14: C: LD="mpicc"
+1658939550.14: O: OPTIMIZE="-Ofast"
+1658939550.14: O: COPTIMIZE="-lm"
+1658939550.14: C: LDOUT="-o options"
+1658939550.27: Stop options command: 2022-07-27 16:32:30 (1658939550.26571)
+1658939550.27: Elapsed time for options command: 00:00:00 (0.230897903442383)
+1658939550.27: Issuing compiler-version command 'specmake --output-sync -j 10 compiler-version'
+1658939550.27: specmake --output-sync -j 10 compiler-version
+1658939550.27: Start compiler-version command: 2022-07-27 16:32:30 (1658939550.2675)
+
+1658939550.37:  CC_VERSION_OPTION:
+
+1658939550.37: gcc (Spack GCC) 9.3.0
+1658939550.37: Copyright (C) 2019 Free Software Foundation, Inc.
+1658939550.37: This is free software; see the source for copying conditions.  There is NO
+1658939550.37: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1658939550.46: Stop compiler-version command: 2022-07-27 16:32:30 (1658939550.46289)
+1658939550.46: Elapsed time for compiler-version command: 00:00:00 (0.195393800735474)
+1658939550.47:   Compile for '518.tealeaf_t' ended at: 2022-07-27 16:32:30 (1658939550)
+1658939550.47:   Elapsed compile for '518.tealeaf_t': 00:00:01 (1)
+1658939550.47: Comparing SHA-512 hashes:
+1658939550.47:   b549b7dcad8354f0e5032aa31264b6c23b42f89e96276e3c49303727c61d96b474914f7e2bc22931f3a30a85733908b14046943fbe62dc0c17a272660dfb87c7 tealeaf
+1658939550.47:   b549b7dcad8354f0e5032aa31264b6c23b42f89e96276e3c49303727c61d96b474914f7e2bc22931f3a30a85733908b14046943fbe62dc0c17a272660dfb87c7 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/518.tealeaf_t/exe/tealeaf_base.aws_mpi
+
+1658939550.62: COMP: "mpicc -c -o options.o -DSPEC -DNDEBUG  -I2d/drivers/ -I2d/c_kernels -Ofast -lm                 <source>"
+1658939550.62: C: CC="mpicc"
+1658939550.62: C: COBJOPT="-c -o options"
+1658939550.62: P: CPUFLAGS="-DSPEC -DNDEBUG"
+1658939550.62: P: BENCH_FLAGS=""
+1658939550.62: P: BENCH_CFLAGS="-I2d/drivers/ -I2d/c_kernels"
+1658939550.62: O: OPTIMIZE="-Ofast"
+1658939550.62: O: COPTIMIZE="-lm"
+1658939550.62: P: PORTABILITY=""
+1658939550.62: P: CPORTABILITY=""
+1658939550.62: O: EXTRA_CFLAGS=""
+1658939550.62: O: EXTRA_OPTIMIZE=""
+1658939550.62: O: EXTRA_COPTIMIZE=""
+1658939550.62: P: EXTRA_PORTABILITY=""
+1658939550.62: P: EXTRA_CPORTABILITY=""
+1658939550.62: LINK: "mpicc      -Ofast -lm         <objects>            -o options  "
+1658939550.62: C: LD="mpicc"
+1658939550.62: O: OPTIMIZE="-Ofast"
+1658939550.62: O: COPTIMIZE="-lm"
+1658939550.62: C: LDOUT="-o options"
+
+1658939550.86:  CC_VERSION_OPTION:
+
+1658939550.86: gcc (Spack GCC) 9.3.0
+1658939550.86: Copyright (C) 2019 Free Software Foundation, Inc.
+1658939550.86: This is free software; see the source for copying conditions.  There is NO
+1658939550.86: warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+1658939550.96: update_config_exehash(Spec::Config=HASH(0x3669dd40), aws_mpi) called
+1658939550.96: Found new hash signature for 518.tealeaf_t=base=aws_mpi
+1658939550.96: Updating config file /lustre/SPEChpc/config/aws_g2.cfg
+1658939550.97: /lustre/SPEChpc/config/aws_g2.cfg will be saved as /lustre/SPEChpc/config/aws_g2.cfg.2022-07-27T163230
+
+1658939550.97: ------------------------------------------------------------------------
+1658939550.99:   Building 519.clvleaf_t base aws_mpi: (build_base_aws_mpi.0000) [2022-07-27 16:32:30]
+1658939551.14:    Using existing directory at '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/519.clvleaf_t/build/build_base_aws_mpi.0000' for 519.clvleaf_t base aws_mpi build
+1658939551.47: Comparing SHA-512 hashes:
+1658939551.47:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /lustre/SPEChpc/benchspec/HPC/619.clvleaf_s/src/Makefile
+1658939551.47:   a744d08c01ea13df07c929b2eb54739190be53aef8c5f9764728525162e748182bc265b53595b7c8869d32172368d3a565a94c5ec2a82e545ba5f2a34ac51c04 /home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/519.clvleaf_t/build/build_base_aws_mpi.0000/Makefile
+1658939551.48: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/519.clvleaf_t/build/build_base_aws_mpi.0000/Makefile.deps':
+
+
+1658939551.48: # End dependencies
+1658939551.48: # These are the build dependencies
+1658939551.48: $(addsuffix $(OBJ), PdV.fppized): PdV.fppized.f90 $(addsuffix $(OBJ),$(basename ) PdV_kernel.fppized clover.fppized ideal_gas.fppized report.fppized revert.fppized update_halo.fppized)
+1658939551.48: $(addsuffix $(OBJ), accelerate.fppized): accelerate.fppized.f90 $(addsuffix $(OBJ),$(basename ) accelerate_kernel.fppized clover.fppized)
+1658939551.48: $(addsuffix $(OBJ), advec_cell_driver.fppized): advec_cell_driver.fppized.f90 $(addsuffix $(OBJ),$(basename ) advec_cell_kernel.fppized clover.fppized)
+1658939551.48: $(addsuffix $(OBJ), advec_mom_driver.fppized): advec_mom_driver.fppized.f90 $(addsuffix $(OBJ),$(basename ) advec_mom_kernel.fppized clover.fppized)
+1658939551.48: $(addsuffix $(OBJ), advection.fppized): advection.fppized.f90 $(addsuffix $(OBJ),$(basename ) advec_cell_driver.fppized advec_mom_driver.fppized clover.fppized update_halo.fppized)
+1658939551.48: $(addsuffix $(OBJ), build_field.fppized): build_field.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized)
+1658939551.48: $(addsuffix $(OBJ), calc_dt.fppized): calc_dt.fppized.f90 $(addsuffix $(OBJ),$(basename ) calc_dt_kernel.fppized clover.fppized)
+1658939551.48: $(addsuffix $(OBJ), clover.fppized): clover.fppized.f90 $(addsuffix $(OBJ),$(basename ) data.fppized definitions.fppized pack_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), clover_leaf.fppized): clover_leaf.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized)
+1658939551.48: $(addsuffix $(OBJ), definitions.fppized): definitions.fppized.f90 $(addsuffix $(OBJ),$(basename ) data.fppized)
+1658939551.48: $(addsuffix $(OBJ), field_summary.fppized): field_summary.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized field_summary_kernel.fppized ideal_gas.fppized)
+1658939551.48: $(addsuffix $(OBJ), flux_calc.fppized): flux_calc.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized flux_calc_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), generate_chunk.fppized): generate_chunk.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized generate_chunk_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), hydro.fppized): hydro.fppized.f90 $(addsuffix $(OBJ),$(basename ) PdV.fppized accelerate.fppized advection.fppized clover.fppized flux_calc.fppized reset_field.fppized timestep.fppized viscosity.fppized)
+1658939551.48: $(addsuffix $(OBJ), ideal_gas.fppized): ideal_gas.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized ideal_gas_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), initialise.fppized): initialise.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized parse.fppized report.fppized)
+1658939551.48: $(addsuffix $(OBJ), initialise_chunk.fppized): initialise_chunk.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized initialise_chunk_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), parse.fppized): parse.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized data.fppized report.fppized)
+1658939551.48: $(addsuffix $(OBJ), read_input.fppized): read_input.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized parse.fppized report.fppized)
+1658939551.48: $(addsuffix $(OBJ), report.fppized): report.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized data.fppized)
+1658939551.48: $(addsuffix $(OBJ), reset_field.fppized): reset_field.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized reset_field_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), revert.fppized): revert.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized revert_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), start.fppized): start.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized ideal_gas.fppized parse.fppized update_halo.fppized)
+1658939551.48: $(addsuffix $(OBJ), timestep.fppized): timestep.fppized.f90 $(addsuffix $(OBJ),$(basename ) calc_dt.fppized clover.fppized definitions.fppized ideal_gas.fppized report.fppized update_halo.fppized viscosity.fppized)
+1658939551.48: $(addsuffix $(OBJ), update_halo.fppized): update_halo.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized update_halo_kernel.fppized update_tile_halo.fppized)
+1658939551.48: $(addsuffix $(OBJ), update_halo_kernel.fppized): update_halo_kernel.fppized.f90 $(addsuffix $(OBJ),$(basename ) data.fppized)
+1658939551.48: $(addsuffix $(OBJ), update_tile_halo.fppized): update_tile_halo.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized update_tile_halo_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), update_tile_halo_kernel.fppized): update_tile_halo_kernel.fppized.f90 $(addsuffix $(OBJ),$(basename ) data.fppized)
+1658939551.48: $(addsuffix $(OBJ), viscosity.fppized): viscosity.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized viscosity_kernel.fppized)
+1658939551.48: $(addsuffix $(OBJ), visit.fppized): visit.fppized.f90 $(addsuffix $(OBJ),$(basename ) clover.fppized ideal_gas.fppized update_halo.fppized viscosity.fppized)
+1658939551.49: Wrote to makefile '/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/519.clvleaf_t/build/build_base_aws_mpi.0000/Makefile.spec':
+1658939551.49: TUNE=base
+1658939551.49: LABEL=aws_mpi
+1658939551.49: NUMBER=519
+1658939551.49: NAME=clvleaf_t
+1658939551.49: SOURCES= accelerate.F90 accelerate_kernel.F90 advec_cell_driver.F90 \
+1658939551.49: 	 advec_cell_kernel.F90 advec_mom_driver.F90 advec_mom_kernel.F90 \
+1658939551.49: 	 advection.F90 build_field.F90 calc_dt.F90 calc_dt_kernel.F90 clover.F90 \
+1658939551.49: 	 clover_leaf.F90 data.F90 definitions.F90 field_summary.F90 \
+1658939551.49: 	 field_summary_kernel.F90 flux_calc.F90 flux_calc_kernel.F90 \
+1658939551.49: 	 generate_chunk.F90 generate_chunk_kernel.F90 hydro.F90 ideal_gas.F90 \
+1658939551.49: 	 ideal_gas_kernel.F90 initialise_chunk.F90 initialise_chunk_kernel.F90 \
+1658939551.49: 	 initialise.F90 pack_kernel.F90 parse.F90 PdV.F90 PdV_kernel.F90 \
+1658939551.49: 	 read_input.F90 report.F90 reset_field.F90 reset_field_kernel.F90 \
+1658939551.49: 	 revert.F90 revert_kernel.F90 start.F90 timer.F90 timestep.F90 \
+1658939551.49: 	 update_halo.F90 update_halo_kernel.F90 update_tile_halo.F90 \
+1658939551.49: 	 update_tile_halo_kernel.F90 visit.F90 viscosity.F90 viscosity_kernel.F90
+1658939551.49: EXEBASE=clvleaf
+1658939551.49: NEED_MATH=
+1658939551.49: USE_SPACK=
+1658939551.49: BENCHLANG=F
+
+1658939551.49: BENCH_FLAGS      = 
+1658939551.49: CC               = mpicc
+1658939551.49: CC_VERSION_OPTION = --version
+1658939551.49: COPTIMIZE        = -lm
+1658939551.49: CXX              = mpicxx
+1658939551.49: CXX_VERSION_OPTION = --version
+1658939551.49: FC               = mpifort
+1658939551.49: FC_VERSION_OPTION = --version
+1658939551.49: MPIRUN_OPTS      = --map-by ppr:64:node
+1658939551.49: OPTIMIZE         = -Ofast
+1658939551.49: OS               = unix
+1658939551.49: PMODEL           = 
+1658939551.49: absolutely_no_locking = 0
+1658939551.49: abstol           = 4e-07
+1658939551.49: action           = validate
+1658939551.49: allow_label_override = 0
+1658939551.49: backup_config    = 1
+1658939551.49: baseexe          = clvleaf
+1658939551.49: basepeak         = 0
+1658939551.49: benchdir         = benchspec
+1658939551.49: benchmark        = 519.clvleaf_t
+1658939551.49: binary           = 
+1658939551.49: bindir           = exe
+1658939551.49: builddir         = build
+1658939551.49: bundleaction     = 
+1658939551.49: bundlename       = 
+1658939551.49: calctol          = 1
+1658939551.49: changedhash      = 0
+1658939551.49: check_version    = 0
+1658939551.49: clean_between_builds = no
+1658939551.49: command_add_redirect = 0
+1658939551.49: commanderrfile   = speccmds.err
+1658939551.49: commandexe       = clvleaf_base.aws_mpi
+1658939551.49: commandfile      = speccmds.cmd
+1658939551.49: commandoutfile   = speccmds.out
+1658939551.49: commandstdoutfile = speccmds.stdout
+1658939551.49: comparedir       = compare
+1658939551.49: compareerrfile   = compare.err
+1658939551.49: comparefile      = compare.cmd
+1658939551.49: compareoutfile   = compare.out
+1658939551.49: comparestdoutfile = compare.stdout
+1658939551.49: compile_error    = 0
+1658939551.49: compwhite        = 
+1658939551.49: configdir        = config
+1658939551.49: configfile       = aws_g2.cfg
+1658939551.49: configpath       = /lustre/SPEChpc/config/aws_g2.cfg
+1658939551.49: copies           = 1
+1658939551.49: current_range    = 
+1658939551.49: datadir          = data
+1658939551.49: default_size     = ref
+1658939551.49: default_submit   = $command
+1658939551.49: delay            = 0
+1658939551.49: deletebinaries   = 0
+1658939551.49: deletework       = 0
+1658939551.49: dependent_workloads = 0
+1658939551.49: device           = 
+1658939551.49: difflines        = 10
+1658939551.49: dirprot          = 511
+1658939551.49: discard_power_samples = 1
+1658939551.49: enable_monitor   = 1
+1658939551.49: endian           = 12345678
+1658939551.49: env_vars         = 0
+1658939551.49: expand_notes     = 0
+1658939551.49: expid            = 
+1658939551.49: exthash_bits     = 0
+1658939551.49: failflags        = 0
+1658939551.49: fake             = 0
+1658939551.49: feedback         = 1
+1658939551.49: flag_url_base    = https://www.spec.org/auto/hpc2021/Docs/benchmarks/flags/
+1658939551.49: floatcompare     = 
+1658939551.49: force_monitor    = 0
+1658939551.49: hostname         = graviton2-dy-c6gn16xlarge-1
+1658939551.49: http_proxy       = 
+1658939551.49: http_timeout     = 30
+1658939551.49: hw_avail         = Nov-2099
+1658939551.49: idle_current_range = 
+1658939551.49: idledelay        = 10
+1658939551.49: idleduration     = 60
+1658939551.49: ignore_errors    = 0
+1658939551.49: ignore_sigint    = 0
+1658939551.49: ignorecase       = 
+1658939551.49: info_wrap_columns = 50
+1658939551.49: inputdir         = input
+1658939551.49: inputgenerrfile  = inputgen.err
+1658939551.49: inputgenfile     = inputgen.cmd
+1658939551.49: inputgenoutfile  = inputgen.out
+1658939551.49: inputgenstdoutfile = inputgen.stdout
+1658939551.49: interconnect_fs_hw_model = BI 100 Series
+1658939551.49: interconnect_fs_hw_switch_fs_count = 1
+1658939551.49: interconnect_fs_hw_switch_fs_data_rate = 100 Gb/s
+1658939551.49: interconnect_fs_hw_switch_fs_firmware = 10.3.0.0.60
+1658939551.49: interconnect_fs_hw_switch_fs_model000 = BI 100 Series 48 Port 2
+1658939551.49: interconnect_fs_hw_switch_fs_model001 = PSU
+1658939551.49: interconnect_fs_hw_switch_fs_ports = 48
+1658939551.49: interconnect_fs_hw_topo = Mesh
+1658939551.49: interconnect_fs_hw_vendor = Big Interconnect Company
+1658939551.49: interconnect_fs_order = 0
+1658939551.49: interconnect_fs_purpose = MPI Traffic
+1658939551.49: interconnect_fs_syslbl = Big Interconnect Company
+1658939551.49: islibrary        = 0
+1658939551.49: iteration        = -1
+1658939551.49: iterations       = 2
+1658939551.49: keeptmp          = 0
+1658939551.49: label            = aws_mpi
+1658939551.49: license_num      = ?
+1658939551.49: line_width       = 0
+1658939551.49: link_input_files = 1
+1658939551.49: locking          = 1
+1658939551.49: log              = hpc2021
+1658939551.49: log_line_width   = 0
+1658939551.49: log_timestamp    = 0
+1658939551.49: logname          = /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log
+1658939551.49: lognum           = 002
+1658939551.49: mail_reports     = all
+1658939551.49: mailcompress     = 0
+1658939551.49: mailmethod       = smtp
+1658939551.49: mailport         = 25
+1658939551.49: mailserver       = 127.0.0.1
+1658939551.49: mailto           = 
+1658939551.49: make             = specmake
+1658939551.49: make_no_clobber  = 0
+1658939551.49: makefile_template = Makefile.YYYtArGeTYYYspec
+1658939551.49: makeflags        = -j 10
+1658939551.49: max_average_uncertainty = 1
+1658939551.49: max_hum_limit    = 0
+1658939551.49: max_report_runs  = 0
+1658939551.49: max_unknown_uncertainty = 1
+1658939551.49: mean_anyway      = 0
+1658939551.49: meter_connect_timeout = 30
+1658939551.49: meter_errors_default = 5
+1658939551.49: meter_errors_percentage = 5
+1658939551.49: min_report_runs  = 2
+1658939551.49: min_temp_limit   = 20
+1658939551.49: minimize_builddirs = 0
+1658939551.49: minimize_rundirs = 0
+1658939551.49: name             = clvleaf_t
+1658939551.49: nansupport       = 
+1658939551.49: need_math        = 
+1658939551.49: no_input_handler = close
+1658939551.49: no_monitor       = 
+1658939551.49: node_compute_count = 8
+1658939551.49: node_compute_hw_accel_connect = PCIe 3.0 16x
+1658939551.49: node_compute_hw_accel_count = 4
+1658939551.49: node_compute_hw_accel_desc = See Notes
+1658939551.49: node_compute_hw_accel_ecc = Yes
+1658939551.49: node_compute_hw_accel_model = Tesla V100-PCIE-16GB
+1658939551.49: node_compute_hw_accel_type = GPU
+1658939551.49: node_compute_hw_accel_vendor = NVIDIA Corporation
+1658939551.49: node_compute_hw_adapter_fs_count = 0
+1658939551.49: node_compute_hw_adapter_fs_data_rate = None
+1658939551.49: node_compute_hw_adapter_fs_driver = None
+1658939551.49: node_compute_hw_adapter_fs_firmware = None
+1658939551.49: node_compute_hw_adapter_fs_interconnect = None
+1658939551.49: node_compute_hw_adapter_fs_model = None
+1658939551.49: node_compute_hw_adapter_fs_ports_used = 0
+1658939551.49: node_compute_hw_adapter_fs_slot_type = None
+1658939551.49: node_compute_hw_cpu_char = Turbo up to 3.4 GHz
+1658939551.49: node_compute_hw_cpu_mhz = 2250
+1658939551.49: node_compute_hw_cpu_name = Turbo CPU
+1658939551.49: node_compute_hw_disk = 1 x 480 GB  SATA 2.5" SSD
+1658939551.49: node_compute_hw_memory = 256 GB (8 x 32 GB 2Rx8 PC4-3200AA-R)
+1658939551.49: node_compute_hw_model = Turblaster 5000
+1658939551.49: node_compute_hw_nchips = 1
+1658939551.49: node_compute_hw_ncores = 64
+1658939551.49: node_compute_hw_ncoresperchip = 64
+1658939551.49: node_compute_hw_ncpuorder = 1 chips
+1658939551.49: node_compute_hw_nthreadspercore = 1
+1658939551.49: node_compute_hw_ocache = None
+1658939551.49: node_compute_hw_other = None
+1658939551.49: node_compute_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939551.49: node_compute_hw_scache = 512 KB I+D on chip per core
+1658939551.49: node_compute_hw_tcache000 = 256 MB I+D on chip per chip
+1658939551.49: node_compute_hw_tcache001 = 16 MB shared / 4 cores
+1658939551.49: node_compute_hw_vendor = Mega Technology
+1658939551.49: node_compute_order = 1
+1658939551.49: node_compute_purpose = compute
+1658939551.49: node_compute_sw_localfile = xfs
+1658939551.49: node_compute_sw_os000 = Amazon Linux 2
+1658939551.49: node_compute_sw_os001 = Linux 5.10.112-108.499.amzn2.aarch64
+1658939551.49: node_compute_sw_other = None
+1658939551.49: node_compute_sw_sharedfile = None
+1658939551.49: node_compute_sw_state = Multi-user, run level 3
+1658939551.49: node_compute_syslbl = TurboBlaster 5000
+1658939551.49: node_fileserver_count = 1
+1658939551.49: node_fileserver_hw_adapter_fs_count = 1
+1658939551.49: node_fileserver_hw_adapter_fs_data_rate = 100 Gb/s
+1658939551.49: node_fileserver_hw_adapter_fs_driver = 10.9.1.0.15
+1658939551.49: node_fileserver_hw_adapter_fs_firmware = 10.9.0.1.0
+1658939551.49: node_fileserver_hw_adapter_fs_interconnect = BG 5000 series
+1658939551.49: node_fileserver_hw_adapter_fs_ports_used = 1
+1658939551.49: node_fileserver_hw_adapter_fs_slot_type = PCI-Express 3.0 x16
+1658939551.49: node_fileserver_hw_cpu_char = None
+1658939551.49: node_fileserver_hw_cpu_mhz = 2700
+1658939551.49: node_fileserver_hw_cpu_name = Intel Xeon Platinum 8280
+1658939551.49: node_fileserver_hw_disk = 1 x 1 TB 12 Gbps SAS 2.5" SSD (JBOD)
+1658939551.49: node_fileserver_hw_memory = 768 GB (24 x 32 GB 2Rx4 PC4-2933Y-R)
+1658939551.49: node_fileserver_hw_model = BG650
+1658939551.49: node_fileserver_hw_nchips = 2
+1658939551.49: node_fileserver_hw_ncores = 56
+1658939551.49: node_fileserver_hw_ncoresperchip = 28
+1658939551.49: node_fileserver_hw_ncpuorder = 1-2 chips
+1658939551.49: node_fileserver_hw_nthreadspercore = 1
+1658939551.49: node_fileserver_hw_ocache = None
+1658939551.49: node_fileserver_hw_other = None
+1658939551.49: node_fileserver_hw_pcache = 32 KB I + 32 KB D on chip per core
+1658939551.49: node_fileserver_hw_scache = 1 MB I+D on chip per core
+1658939551.49: node_fileserver_hw_tcache = 39424 KB I+D on chip per chip
+1658939551.49: node_fileserver_hw_vendor = Big Storage Company
+1658939551.49: node_fileserver_order = 2
+1658939551.49: node_fileserver_purpose = Fileserver
+1658939551.49: node_fileserver_sw_localfile = None
+1658939551.49: node_fileserver_sw_os = Red Hat Enterprise Linux Server release 7.6
+1658939551.49: node_fileserver_sw_other = None
+1658939551.49: node_fileserver_sw_sharedfile = NFS
+1658939551.49: node_fileserver_sw_state = Multi-User, run level 3
+1658939551.49: node_fileserver_syslbl = NFS
+1658939551.49: noratios         = 0
+1658939551.49: note_preenv      = 0
+1658939551.49: notes_wrap_columns = 0
+1658939551.49: notes_wrap_indent =   
+1658939551.49: num              = 519
+1658939551.49: obiwan           = 
+1658939551.49: oldhash          = 
+1658939551.49: os_exe_ext       = 
+1658939551.49: output_format    = all
+1658939551.49: output_root      = /home/sam/g2_spec_results/tiny/tiny_gnu_128
+1658939551.49: outputdir        = output
+1658939551.49: parallel_test    = 0
+1658939551.49: parallel_test_submit = 0
+1658939551.49: parallel_test_workloads = 
+1658939551.49: path             = /lustre/SPEChpc/benchspec/HPC/519.clvleaf_t
+1658939551.49: plain_train      = 0
+1658939551.49: platform         = 
+1658939551.49: pmodel           = MPI
+1658939551.49: power            = 0
+1658939551.49: preenv           = 1
+1658939551.49: prefix           = 
+1658939551.49: ranks            = 128
+1658939551.49: rawhash_bits     = 256
+1658939551.49: rebuild          = 1
+1658939551.49: reftime          = reftime
+1658939551.49: reltol           = 0.006
+1658939551.49: reportable       = 0
+1658939551.49: resultdir        = result
+1658939551.49: review           = 0
+1658939551.49: run              = all
+1658939551.49: rundir           = run
+1658939551.49: runhpc           = /lustre/SPEChpc/bin/harness/runhpc --rebuild --config=aws_g2.cfg --ranks=128 --noreportable --size=test --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu_128 --iterations=2 tiny
+1658939551.49: runmode          = speed
+1658939551.49: safe_eval        = 1
+1658939551.49: save_build_files = 
+1658939551.49: section_specifier_fatal = 1
+1658939551.49: setprocgroup     = 1
+1658939551.49: setup_error      = 0
+1658939551.49: sigint           = 2
+1658939551.49: size             = test
+1658939551.49: size_class       = test
+1658939551.49: skipabstol       = 
+1658939551.49: skipobiwan       = 
+1658939551.49: skipreltol       = 
+1658939551.49: skiptol          = 
+1658939551.49: smarttune        = base
+1658939551.49: specdiff         = specdiff
+1658939551.49: specrun          = specinvoke
+1658939551.49: srcalt           = 
+1658939551.49: srcdir           = src
+1658939551.49: srcsource        = /lustre/SPEChpc/benchspec/HPC/619.clvleaf_s/src
+1658939551.49: stagger          = 10
+1658939551.49: strict_rundir_verify = 1
+1658939551.49: submit_default   = mpirun -np $ranks ${MPIRUN_OPTS} $command
+1658939551.49: sw_avail         = Nov-2099
+1658939551.49: sw_compiler000   = C/C++/Fortran: GCC Version 9.3.0
+1658939551.49: sw_mpi_library000 = OpenMPI Version 4.1.3
+1658939551.49: sysinfo_hash_bits = 256
+1658939551.49: sysinfo_program  = 
+1658939551.49: sysinfo_program_hash = 
+1658939551.49: system_name      = Big Compute
+1658939551.49: system_vendor    = Mega Technology
+1658939551.49: table            = 1
+1658939551.49: teeout           = yes
+1658939551.49: test_date        = Jul-2022
+1658939551.49: test_sponsor     = University of Bristol
+1658939551.49: tester           = University of Bristol
+1658939551.49: threads          = 1
+1658939551.49: top              = /lustre/SPEChpc
+1658939551.49: train_single_thread = 0
+1658939551.49: train_with       = train
+1658939551.49: tune             = base
+1658939551.49: uid              = 1443601145
+1658939551.49: unbuffer         = 1
+1658939551.49: uncertainty_exception = 5
+1658939551.49: update           = 0
+1658939551.49: update_url       = http://www.spec.org/auto/hpc2021/updates/
+1658939551.49: use_spack        = 
+1658939551.49: use_submit_for_compare = 0
+1658939551.49: use_submit_for_speed = 1
+1658939551.49: username         = sam
+1658939551.49: verbose          = 5
+1658939551.49: verify_binaries  = 1
+1658939551.49: version          = 1.000003
+1658939551.49: version_url      = http://www.spec.org/auto/hpc2021/devel_version
+1658939551.49: voltage_range    = 
+1658939551.49: worklist         = list
+1658939551.49: OUTPUT_RMFILES   = clover.out
+1658939551.49:   Compile for '519.clvleaf_t' started at: 2022-07-27 16:32:31 (1658939551)
+1658939551.50: Issuing make.clean command 'specmake --output-sync -j 10 clean'
+1658939551.50: specmake --output-sync -j 10 clean
+1658939551.50: Start make.clean command: 2022-07-27 16:32:31 (1658939551.50375)
+1658939551.61: rm -rf *.o  clover.out
+1658939551.61: find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+1658939551.61: rm -rf clvleaf
+1658939551.61: rm -rf clvleaf.exe
+1658939551.61: rm -rf core
+1658939551.70: Stop make.clean command: 2022-07-27 16:32:31 (1658939551.69827)
+1658939551.70: Elapsed time for make.clean command: 00:00:00 (0.194515943527222)
+1658939551.71: Issuing make command 'specmake --output-sync -j 10 build'
+1658939551.71: specmake --output-sync -j 10 build
+1658939551.71: Start make command: 2022-07-27 16:32:31 (1658939551.70912)
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG accelerate.F90 -o accelerate.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG accelerate_kernel.F90 -o accelerate_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG data.F90 -o data.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG advec_cell_driver.F90 -o advec_cell_driver.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG definitions.F90 -o definitions.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG advec_mom_driver.F90 -o advec_mom_driver.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG advec_cell_kernel.F90 -o advec_cell_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG pack_kernel.F90 -o pack_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG advec_mom_kernel.F90 -o advec_mom_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG advection.F90 -o advection.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG update_halo.F90 -o update_halo.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG update_tile_halo.F90 -o update_tile_halo.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG build_field.F90 -o build_field.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG calc_dt.F90 -o calc_dt.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG clover_leaf.F90 -o clover_leaf.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG calc_dt_kernel.F90 -o calc_dt_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG field_summary.F90 -o field_summary.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG field_summary_kernel.F90 -o field_summary_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG ideal_gas.F90 -o ideal_gas.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG update_halo_kernel.F90 -o update_halo_kernel.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG clover.F90 -o clover.fppized.f90
+1658939551.81: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG ideal_gas_kernel.F90 -o ideal_gas_kernel.fppized.f90
+1658939551.82: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG update_tile_halo_kernel.F90 -o update_tile_halo_kernel.fppized.f90
+1658939551.82: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG flux_calc.F90 -o flux_calc.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG flux_calc_kernel.F90 -o flux_calc_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG generate_chunk.F90 -o generate_chunk.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG generate_chunk_kernel.F90 -o generate_chunk_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG hydro.F90 -o hydro.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG PdV.F90 -o PdV.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG report.F90 -o report.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG PdV_kernel.F90 -o PdV_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG revert.F90 -o revert.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG revert_kernel.F90 -o revert_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG reset_field.F90 -o reset_field.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG reset_field_kernel.F90 -o reset_field_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG timestep.F90 -o timestep.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG viscosity.F90 -o viscosity.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG viscosity_kernel.F90 -o viscosity_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG initialise_chunk.F90 -o initialise_chunk.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG initialise_chunk_kernel.F90 -o initialise_chunk_kernel.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG initialise.F90 -o initialise.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG parse.F90 -o parse.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG timer.F90 -o timer.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG read_input.F90 -o read_input.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG start.F90 -o start.fppized.f90
+1658939551.92: /lustre/SPEChpc/bin/specperl /lustre/SPEChpc/bin/harness/specpp -DSPEC -DNDEBUG visit.F90 -o visit.fppized.f90
+1658939551.92: mpifort -c -o data.fppized.o -Ofast data.fppized.f90
+1658939552.02: mpifort -c -o ideal_gas_kernel.fppized.o -Ofast ideal_gas_kernel.fppized.f90
+1658939552.02: mpifort -c -o accelerate_kernel.fppized.o -Ofast accelerate_kernel.fppized.f90
+1658939552.02: mpifort -c -o field_summary_kernel.fppized.o -Ofast field_summary_kernel.fppized.f90
+1658939552.02: mpifort -c -o flux_calc_kernel.fppized.o -Ofast flux_calc_kernel.fppized.f90
+1658939552.02: mpifort -c -o revert_kernel.fppized.o -Ofast revert_kernel.fppized.f90
+1658939552.02: mpifort -c -o calc_dt_kernel.fppized.o -Ofast calc_dt_kernel.fppized.f90
+1658939552.02: mpifort -c -o reset_field_kernel.fppized.o -Ofast reset_field_kernel.fppized.f90
+1658939552.12: mpifort -c -o timer.fppized.o -Ofast timer.fppized.f90
+1658939552.12: mpifort -c -o generate_chunk_kernel.fppized.o -Ofast generate_chunk_kernel.fppized.f90
+1658939552.12: mpifort -c -o viscosity_kernel.fppized.o -Ofast viscosity_kernel.fppized.f90
+1658939552.12: mpifort -c -o PdV_kernel.fppized.o -Ofast PdV_kernel.fppized.f90
+1658939552.12: mpifort -c -o initialise_chunk_kernel.fppized.o -Ofast initialise_chunk_kernel.fppized.f90
+1658939552.12: mpifort -c -o pack_kernel.fppized.o -Ofast pack_kernel.fppized.f90
+1658939552.12: mpifort -c -o advec_cell_kernel.fppized.o -Ofast advec_cell_kernel.fppized.f90
+1658939552.22: mpifort -c -o advec_mom_kernel.fppized.o -Ofast advec_mom_kernel.fppized.f90
+1658939552.62: mpifort -c -o definitions.fppized.o -Ofast definitions.fppized.f90
+1658939552.62: mpifort -c -o clover.fppized.o -Ofast clover.fppized.f90
+1658939552.62: clover.fppized.f90:36:6:
+
+1658939552.62:    36 |   USE MPI
+1658939552.62:       |      1
+1658939552.62: Fatal Error: Cannot read module file 'mpi.mod' opened at (1), because it was created by a different version of GNU Fortran
+1658939552.62: compilation terminated.
+1658939552.62: specmake: *** [/lustre/SPEChpc/benchspec/Makefile.defaults:406: clover.fppized.o] Error 1
+1658939552.62: specmake: *** Waiting for unfinished jobs....
+1658939552.73: mpifort -c -o update_tile_halo_kernel.fppized.o -Ofast update_tile_halo_kernel.fppized.f90
+1658939553.03: mpifort -c -o update_halo_kernel.fppized.o -Ofast update_halo_kernel.fppized.f90
+1658939553.20: Stop make command: 2022-07-27 16:32:33 (1658939553.19906)
+1658939553.20: Elapsed time for make command: 00:00:01 (1.48993897438049)
+1658939553.20: Error with make 'specmake --output-sync -j 10 build':
+
+1658939553.20:   ----------------------------------------------------------------------------
+1658939553.20:   Please review this file:
+1658939553.20:     "/home/sam/g2_spec_results/tiny/tiny_gnu_128/benchspec/HPC/519.clvleaf_t/build/build_base_aws_mpi.0000/make.out"
+1658939553.20:   ----------------------------------------------------------------------------
+
+1658939553.20:   Command returned exit code 2
+1658939553.21:   Error with make!
+1658939553.21:   Compile for '519.clvleaf_t' ended at: 2022-07-27 16:32:33 (1658939553)
+1658939553.21:   Elapsed compile for '519.clvleaf_t': 00:00:02 (2)
+1658939553.21: *** Error building 519.clvleaf_t base
+1658939553.21: If you wish to ignore this error, please use '-I' or ignore errors.
+1658939553.21: update_config_exehash(Spec::Config=HASH(0x3669dd40), aws_mpi) called
+
+1658939553.21: The log for this run is in /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log
+1658939553.21: The debug log for this run is in /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log.debug
+
+1658939553.21: *
+1658939553.21: * Temporary files were NOT deleted; keeping temporaries such as
+1658939553.21: * /home/sam/g2_spec_results/tiny/tiny_gnu_128/result/hpc2021.002.log.debug and
+1658939553.21: * /home/sam/g2_spec_results/tiny/tiny_gnu_128/tmp/hpc2021.002
+1658939553.21: * (These may be large!)
+1658939553.21: *
+1658939553.22: runhpc finished at 2022-07-27 16:32:33; 13 total seconds elapsed
