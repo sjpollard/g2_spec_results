@@ -10,4 +10,4 @@ cd ../../../../../lustre/SPEChpc
 . ./shrc
 cd $SLURM_SUBMIT_DIR
 
-runhpc --rebuild --config=aws_g2_gnu7.cfg --ranks=64 --noreportable --size=test --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu7_64 --iterations=2 tiny
+runhpc --rebuild --config=aws_g2_gnu7.cfg --ranks=64 --noreportable --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu7_64 --iterations=2 528.pot3d_t #tiny
