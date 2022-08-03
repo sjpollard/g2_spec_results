@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name SPEC_tiny_gnu7_128_4
+#SBATCH --partition graviton2
+#SBATCH --nodes 8
+#SBATCH --ntasks 128
+#SBATCH --ntasks-per-node 16
+#SBATCH --cpus-per-task 4
+#SBATCH --time 03:00:00
+#SBATCH --output SPEC_tiny_gnu7_128_4.out
+
+cd ../../../../../lustre/SPEChpc
+. ./shrc
+cd $SLURM_SUBMIT_DIR
+
+runhpc --rebuild --define model=omp --define ppn=16 --pmodel=OMP --config=aws_g2_gnu7.cfg --ranks=128 --threads=4 --reportable --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu7_128_4 --iterations=2 tiny

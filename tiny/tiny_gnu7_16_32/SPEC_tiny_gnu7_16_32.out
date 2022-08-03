@@ -1,0 +1,97 @@
+SPEC HPC(r) 2021 Benchmark Suites
+Copyright 1995-2021 Standard Performance Evaluation Corporation (SPEC)
+
+runhpc v.unknown
+Using 'linux-aarch64' tools
+Reading file manifests... read 14938 entries from 2 files in 0.06s (243460 files/s)
+Loading runhpc modules.................
+Locating benchmarks...found 31 benchmarks in 5 benchsets.
+Reading config file '/lustre/SPEChpc/config/aws_g2_gnu7.cfg'
+Reading included config file '/lustre/SPEChpc/config/aws.inc'
+WARNING: Duplicate setting for "node_compute_sw_os000" on line 28
+         of /lustre/SPEChpc/config/aws_g2_gnu7.cfg
+WARNING: Duplicate setting for "node_compute_sw_os001" on line 29
+         of /lustre/SPEChpc/config/aws_g2_gnu7.cfg
+
+
+1 configuration selected:
+
+ Action    Run Mode   Workload     Report Type     Benchmarks
+--------   --------   --------   ---------------   ----------------------------
+validate   speed      ref        SPEChpc2021_tny   532.sph_exa_t               
+-------------------------------------------------------------------------------
+
+Benchmarks selected: 532.sph_exa_t
+Compiling Binaries
+  Building 532.sph_exa_t base aws_omp: (build_base_aws_omp.0000) [2022-08-03 12:56:06]
+specmake --output-sync -j 10 clean
+rm -rf *.o  sqpatch.dat
+find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+rm -rf sph_exa
+rm -rf sph_exa.exe
+rm -rf core
+specmake --output-sync -j 10 build
+mpicxx -c -o sqpatch.o -DSPEC -DNDEBUG  -DUSE_MPI -DSPEC_USE_LT_IN_KERNELS -I. -Iinclude -Iinclude/tree  -Ofast -fopenmp       -DSPEC_OPENMP      sqpatch.cpp
+mpicxx      -Ofast -fopenmp          sqpatch.o                      -o sph_exa  
+specmake --output-sync -j 10 options
+
+COMP: "mpicxx -c -o options.o -DSPEC -DNDEBUG  -DUSE_MPI -DSPEC_USE_LT_IN_KERNELS -I. -Iinclude -Iinclude/tree  -Ofast -fopenmp       -DSPEC_OPENMP      <source>"
+C: CXXC="mpicxx"
+C: CXXOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS=""
+P: BENCH_CXXFLAGS="-DUSE_MPI -DSPEC_USE_LT_IN_KERNELS -I. -Iinclude -Iinclude/tree "
+O: OPTIMIZE="-Ofast -fopenmp"
+O: CXXOPTIMIZE=""
+P: PORTABILITY=""
+P: CXXPORTABILITY=""
+O: EXTRA_CXXFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_CXXOPTIMIZE=""
+P: EXTRA_PORTABILITY=""
+P: EXTRA_CXXPORTABILITY=""
+LINK: "mpicxx      -Ofast -fopenmp          <objects>            -o options  "
+C: LD="mpicxx"
+O: OPTIMIZE="-Ofast -fopenmp"
+C: LDOUT="-o options"
+specmake --output-sync -j 10 compiler-version
+
+ CXXC_VERSION_OPTION:
+
+g++ (GCC) 7.3.1 20180712 (Red Hat 7.3.1-14)
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+Build successes for tiny: 532.sph_exa_t(base)
+Build errors for tiny: None
+
+Setting Up Run Directories
+  Setting up 532.sph_exa_t ref base aws_omp: run_base_ref_aws_omp.0002
+Running Benchmarks
+  Running (#1) 532.sph_exa_t ref base aws_omp threads:32 [2022-08-03 12:56:10]
+/lustre/SPEChpc/bin/specinvoke -d /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/benchspec/HPC/532.sph_exa_t/run/run_base_ref_aws_omp.0002 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+/lustre/SPEChpc/bin/specinvoke -d /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/benchspec/HPC/532.sph_exa_t/run/run_base_ref_aws_omp.0002 -f compare.cmd -E -e compare.err -o compare.stdout
+  Running (#2) 532.sph_exa_t ref base aws_omp threads:32 [2022-08-03 12:58:19]
+/lustre/SPEChpc/bin/specinvoke -d /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/benchspec/HPC/532.sph_exa_t/run/run_base_ref_aws_omp.0002 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+/lustre/SPEChpc/bin/specinvoke -d /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/benchspec/HPC/532.sph_exa_t/run/run_base_ref_aws_omp.0002 -f compare.cmd -E -e compare.err -o compare.stdout
+Success: 2x532.sph_exa_t
+Producing Raw Reports
+ label: aws_omp
+  workload: ref
+   metric: SPEChpc2021_tny_base
+    format: raw -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.rsf
+Parsing flags for 532.sph_exa_t base: done
+Doing flag reduction: done
+    format: flags -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.flags.html
+    format: cfg -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.cfg, /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.orig.cfg
+    format: CSV -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.csv
+    format: PDF -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.pdf
+    format: HTML -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.html
+    format: PostScript -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.ps
+    format: Text -> /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021_tny.004.tiny.ref.txt
+
+The log for this run is in /home/sam/g2_spec_results/tiny/tiny_gnu7_16_32/result/hpc2021.004.log
+
+runhpc finished at 2022-08-03 13:00:31; 265 total seconds elapsed
