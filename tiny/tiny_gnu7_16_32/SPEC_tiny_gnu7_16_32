@@ -12,4 +12,4 @@ cd ../../../../../lustre/SPEChpc
 . ./shrc
 cd $SLURM_SUBMIT_DIR
 
-runhpc --rebuild --define model=omp --define ppn=2 --pmodel=OMP --config=aws_g2_gnu7.cfg --ranks=16 --threads=32 --noreportable --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu7_16_32 --iterations=2 532.sph_exa_t #tiny
+runhpc --rebuild --define model=omp --define ppn=2 --pmodel=OMP --config=aws_g2_gnu7.cfg --ranks=16 --threads=32 --reportable --output_format=all --output_root=/home/sam/g2_spec_results/tiny/tiny_gnu7_16_32 --iterations=2 tiny
